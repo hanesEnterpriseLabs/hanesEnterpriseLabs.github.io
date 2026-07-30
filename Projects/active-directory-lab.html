@@ -867,6 +867,124 @@ Collection Method: Windows Event Forwarding</code></pre>
     </p>
 
 </div>
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">STEP 09</p>
+
+        <h3>Sysmon Deployment & Centralized Endpoint Telemetry</h3>
+
+        <p>
+            After expanding centralized monitoring for Windows authentication,
+            account-management, and access-control events, I extended endpoint
+            visibility on WS01 by deploying Microsoft Sysmon.
+        </p>
+
+        <p>
+            Sysmon was installed using a custom configuration file to provide
+            more detailed telemetry about activity occurring on the workstation.
+            After installation, I verified that the Sysmon service was running
+            and that events were being generated in the
+            <strong>Microsoft-Windows-Sysmon/Operational</strong> log.
+        </p>
+
+        <p>
+            Process creation telemetry was then validated using
+            <strong>Sysmon Event ID 1</strong>. The resulting events provided
+            detailed information including the process image, command line,
+            user context, cryptographic hashes, parent process, and parent
+            command line.
+        </p>
+
+        <p>
+            Finally, I integrated the Sysmon operational log with the existing
+            Windows Event Forwarding architecture. Sysmon telemetry generated
+            on <strong>WS01.ad.hanes.test</strong> was successfully collected
+            in the <strong>ForwardedEvents</strong> log on DC01.
+        </p>
+
+        <p>
+            This expanded the monitoring environment beyond standard Windows
+            security auditing by providing centralized endpoint telemetry that
+            can support process analysis, network-activity investigation, and
+            future detection engineering.
+        </p>
+
+        <p class="command-label">Endpoint Telemetry Workflow</p>
+
+        <pre class="command-block"><code>WS01 Endpoint Activity
+        │
+        ▼
+Microsoft Sysmon
+        │
+        ├── Event ID 1  - Process Creation
+        ├── Event ID 3  - Network Connection
+        ├── Event ID 5  - Process Termination
+        └── Event ID 11 - File Creation
+        │
+        ▼
+Sysmon Operational Log
+        │
+        ▼
+Windows Event Forwarding
+        │
+        ▼
+DC01 - ForwardedEvents
+        │
+        ▼
+Centralized Endpoint Monitoring</code></pre>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/31-sysmon-installation-success.png"
+            alt="PowerShell showing successful Sysmon installation and configuration on WS01"
+        >
+
+        <p class="evidence-caption">
+            Sysmon was successfully installed and configured
+            on WS01, establishing enhanced endpoint telemetry collection.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/33-sysmon-process-creation-notepad.png"
+            alt="Sysmon Event ID 1 showing detailed process creation telemetry for Notepad on WS01"
+        >
+
+        <p class="evidence-caption">
+            Sysmon Event ID 1 captured process creation
+            telemetry including the executable, command line, user context,
+            hashes, and parent process information.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/35-centralized-sysmon-events-dc01.png"
+            alt="PowerShell on DC01 showing centralized Sysmon events forwarded from WS01"
+        >
+
+        <p class="evidence-caption">
+            Sysmon telemetry from WS01 was successfully
+            forwarded to DC01, confirming centralized collection of enhanced
+            endpoint activity through Windows Event Forwarding.
+        </p>
+
+    </div>
+
+</div>
 
 </div>
 
@@ -1002,6 +1120,194 @@ Address: 192.168.10.10</code></pre>
                     </p>
 
                 </div>
+                <!-- ISSUE 02 -->
+<div class="troubleshooting-item">
+
+    <p class="section-label">ISSUE 02</p>
+
+    <h3>Windows Event Forwarding & Sysmon Collection</h3>
+
+    <p>
+        While extending the monitoring environment with Microsoft Sysmon,
+        I encountered an issue with the existing Windows Event Forwarding
+        pipeline between WS01 and DC01.
+    </p>
+
+    <p>
+        The Windows Event Collector subscription showed the WS01 source in a
+        <strong>Trying</strong> state and returned a WSMan connectivity error.
+        An initial attempt to query the Sysmon operational channel from DC01
+        also failed because that log exists on the endpoint where Sysmon is
+        installed rather than on the collector.
+    </p>
+
+    <p>
+        I worked through the collection path component by component rather
+        than changing multiple settings at once. This included validating
+        WinRM on DC01, testing WSMan connectivity from WS01, verifying that
+        both WinRM and Sysmon were running on the workstation, and reviewing
+        the permissions required for remote event-log collection.
+    </p>
+
+    <p>
+        This troubleshooting process also reinforced the separation of roles
+        within the monitoring architecture. WS01 operates as the endpoint
+        generating Sysmon telemetry, while DC01 acts as the centralized
+        Windows Event Collector.
+    </p>
+
+    <p>
+        After correcting the forwarding configuration, I revalidated the
+        subscription using <strong>wecutil</strong>. Both the subscription
+        and the WS01 event source returned
+        <strong>RuntimeStatus: Active</strong> with
+        <strong>LastError: 0</strong>, confirming that the centralized
+        event-forwarding path had been successfully restored.
+    </p>
+
+
+    <!-- Problem / Action / Validation Cards -->
+    <div class="troubleshooting-grid">
+
+        <div class="troubleshooting-card">
+            <h4>Problem</h4>
+            <p>
+                The WS01 event source remained in a Trying state and reported
+                a WSMan connectivity failure, preventing reliable centralized
+                collection.
+            </p>
+        </div>
+
+        <div class="troubleshooting-card">
+            <h4>Action</h4>
+            <p>
+                Validated WinRM, WSMan connectivity, Sysmon service status,
+                endpoint event-log permissions, and the relationship between
+                the source endpoint and collector.
+            </p>
+        </div>
+
+        <div class="troubleshooting-card">
+            <h4>Validation</h4>
+            <p>
+                Confirmed the WEC subscription and WS01 event source returned
+                RuntimeStatus Active with LastError 0 after correcting the
+                forwarding configuration.
+            </p>
+        </div>
+
+    </div>
+
+
+    <p class="command-label">Troubleshooting Workflow</p>
+
+    <pre class="command-block"><code>Sysmon / WEF Collection Issue
+        │
+        ▼
+Review WEC Subscription
+        │
+        ├── RuntimeStatus: Trying
+        └── WSMan Connectivity Error
+        │
+        ▼
+Validate DC01
+        │
+        └── WinRM Running
+        │
+        ▼
+Validate WS01
+        │
+        ├── Test-WSMan DC01
+        ├── WinRM Running
+        ├── Sysmon64 Running
+        └── Event Log Permissions
+        │
+        ▼
+Correct Forwarding Configuration
+        │
+        ▼
+Revalidate WEC Subscription
+        │
+        ├── RuntimeStatus: Active
+        └── LastError: 0
+        │
+        ▼
+Centralized Collection Restored</code></pre>
+
+
+    <!-- Troubleshooting 3 -->
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/troubleshooting 3.png"
+            alt="Windows Event Collector troubleshooting showing WSMan connectivity and Sysmon channel errors"
+        >
+
+        <p class="evidence-caption">
+            Initial validation showed the WS01 event
+            source in a Trying state with a WSMan connectivity error.
+            Attempting to query the Sysmon operational log from DC01 also
+            helped confirm that Sysmon telemetry originated on WS01 rather
+            than on the collector.
+        </p>
+
+    </div>
+
+
+    <!-- Troubleshooting 4 -->
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/Troubleshooting 4.png"
+            alt="PowerShell troubleshooting on DC01 validating the Windows Remote Management service"
+        >
+
+        <p class="evidence-caption">
+            Collector-side service validation confirmed
+            that WinRM was running on DC01. The absence of Sysmon64 on the
+            collector also reinforced that Sysmon was an endpoint-side
+            telemetry source rather than a required collector service.
+        </p>
+
+    </div>
+
+
+    <!-- Troubleshooting 5 -->
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/Troubleshooting 5.png"
+            alt="WS01 PowerShell validation showing WSMan connectivity, WinRM, Sysmon, and Event Log Readers membership"
+        >
+
+        <p class="evidence-caption">
+            Endpoint validation confirmed successful
+            WSMan communication with DC01, verified that both WinRM and
+            Sysmon64 were running on WS01, and reviewed Event Log Readers
+            membership required for centralized event access.
+        </p>
+
+    </div>
+
+
+    <!-- Troubleshooting 6 -->
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/troubleshooting 6.png"
+            alt="Windows Event Collector subscription showing WS01 active with LastError zero"
+        >
+
+        <p class="evidence-caption">
+            Final validation showed both the
+            WS01 Security Events subscription and the WS01 event source
+            operating with RuntimeStatus Active and LastError 0, confirming
+            that the Windows Event Forwarding path had been restored.
+        </p>
+
+    </div>
+
+</div>
 
             </div>
 
@@ -1022,16 +1328,22 @@ Address: 192.168.10.10</code></pre>
         <div class="project-text">
 
             <p>
-                This project progressed beyond basic Active Directory deployment
-                into a small defensive-security environment focused on centralized
-                identity management, endpoint hardening, security auditing,
-                event collection, and authentication monitoring.
+                <p>
+    This project progressed beyond basic Active Directory deployment
+    into a small defensive-security environment focused on centralized
+    identity management, endpoint hardening, security auditing, event
+    collection, identity and access monitoring, and enhanced endpoint
+    telemetry.
+</p>
             </p>
 
             <p>
-                The final environment demonstrated how multiple Windows security
-                technologies can work together to provide both preventative
-                controls and visibility into endpoint activity.
+                <p>
+    The final environment demonstrated how multiple Windows security
+    technologies can work together to provide preventative controls,
+    centralized visibility, and enhanced endpoint telemetry for
+    security monitoring and investigation.
+</p>
             </p>
 
 
@@ -1083,6 +1395,17 @@ Address: 192.168.10.10</code></pre>
                         activity for security analysis.
                     </p>
                 </div>
+                <div class="outcome-card">
+    <p class="card-label">ENDPOINT VISIBILITY</p>
+    <h3>Centralized Endpoint Telemetry</h3>
+
+    <p>
+        Extended the monitoring environment with Microsoft Sysmon
+        to capture enhanced endpoint activity from WS01, including
+        process and network telemetry, and centralized the resulting
+        events on DC01 through Windows Event Forwarding.
+    </p>
+</div>
 
 
                 <div class="outcome-card">
@@ -1098,15 +1421,16 @@ Address: 192.168.10.10</code></pre>
 
 
                 <div class="outcome-card">
-                    <p class="card-label">DETECTION</p>
-                    <h3>Failed Authentication Monitoring</h3>
+    <p class="card-label">DETECTION</p>
+    <h3>Identity & Access Monitoring</h3>
 
-                    <p>
-                        Queried Event ID 4625 activity and created a custom Event
-                        Viewer detection view to isolate failed authentication
-                        attempts originating from the workstation.
-                    </p>
-                </div>
+    <p>
+        Expanded centralized detection across authentication,
+        account-management, and access-control activity by monitoring
+        failed logons, user account creation, and security-enabled
+        local group membership changes from WS01 on DC01.
+    </p>
+</div>
 
             </div>
 
@@ -1215,10 +1539,10 @@ Address: 192.168.10.10</code></pre>
                     <h3>Windows Event Forwarding</h3>
 
                     <p>
-                        Configured centralized Windows event collection to
-                        forward endpoint security telemetry from WS01 to the
-                        domain controller for analysis.
-                    </p>
+    Configured centralized Windows Event Forwarding to collect
+    Windows security events and Sysmon endpoint telemetry from
+    WS01 on DC01 for centralized monitoring and investigation.
+</p>
 
                     <div class="skill-tags">
                         <span>WEF</span>
@@ -1227,6 +1551,25 @@ Address: 192.168.10.10</code></pre>
                         <span>Telemetry</span>
                     </div>
                 </div>
+                <div class="skill-demonstrated-card">
+    <p class="card-label">ENDPOINT TELEMETRY</p>
+    <h3>Sysmon Monitoring</h3>
+
+    <p>
+        Deployed and configured Microsoft Sysmon on WS01 to capture
+        enhanced endpoint telemetry including process creation,
+        network connections, process termination, and file activity.
+        Integrated Sysmon with Windows Event Forwarding to centralize
+        endpoint telemetry on DC01 for security analysis.
+    </p>
+
+    <div class="skill-tags">
+        <span>Sysmon</span>
+        <span>Event ID 1</span>
+        <span>Endpoint Telemetry</span>
+        <span>WEF</span>
+    </div>
+</div>
                 <div class="skill-demonstrated-card">
     <p class="card-label">DETECTION</p>
     <h3>Security Event Analysis</h3>
