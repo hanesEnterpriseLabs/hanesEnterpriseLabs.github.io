@@ -784,6 +784,89 @@ Purpose: Authentication Failure Detection</code></pre>
         </p>
 
     </div>
+    <div class="evidence-text">
+
+    <h3>Expanded Identity & Access Monitoring</h3>
+
+    <p>
+        After validating failed-logon detection, I expanded the centralized
+        monitoring workflow to additional identity and access-control events.
+    </p>
+
+    <p>
+        <strong>Event ID 4720</strong> was used to identify user account creation,
+        providing visibility into account lifecycle activity that could indicate
+        legitimate administrative work or unauthorized account provisioning.
+    </p>
+
+    <p>
+        <strong>Event ID 4732</strong> was used to identify changes to
+        security-enabled local group membership. Monitoring this activity is
+        important because group membership changes can directly affect user
+        privileges and access to protected resources.
+    </p>
+
+    <p>
+        Both events were collected through Windows Event Forwarding and reviewed
+        centrally on DC01, demonstrating that the same monitoring architecture
+        could support authentication, account-management, and access-control
+        visibility.
+    </p>
+
+    <p class="command-label">Expanded Detection Coverage</p>
+
+    <pre class="command-block"><code>Event ID 4625
+Failed Logon
+        │
+        ├── Authentication Monitoring
+        │
+Event ID 4720
+User Account Created
+        │
+        ├── Account Lifecycle Monitoring
+        │
+Event ID 4732
+Member Added to Security-Enabled Local Group
+        │
+        └── Privilege / Access Monitoring
+
+Source Endpoint: WS01
+Collector: DC01
+Collection Method: Windows Event Forwarding</code></pre>
+
+</div>
+
+
+<div class="evidence-image">
+
+    <img
+        src="../images/active-directory-lab/29-centralized-4720-user-account-creation-detection.png"
+        alt="Centralized Event ID 4720 showing user account creation activity from WS01"
+    >
+
+    <p class="evidence-caption">
+        Event ID 4720 was collected centrally on DC01,
+        demonstrating visibility into user account creation activity
+        originating from WS01.
+    </p>
+
+</div>
+
+
+<div class="evidence-image">
+
+    <img
+        src="../images/active-directory-lab/30-centralized-4732-local-group-membership-change.png"
+        alt="Centralized Event ID 4732 showing a local security group membership change from WS01"
+    >
+
+    <p class="evidence-caption">
+        Event ID 4732 was collected centrally on DC01,
+        demonstrating visibility into security-enabled local group membership
+        changes and privilege-related activity.
+    </p>
+
+</div>
 
 </div>
 
@@ -1144,26 +1227,24 @@ Address: 192.168.10.10</code></pre>
                         <span>Telemetry</span>
                     </div>
                 </div>
-
-
                 <div class="skill-demonstrated-card">
-                    <p class="card-label">DETECTION</p>
-                    <h3>Security Event Analysis</h3>
+    <p class="card-label">DETECTION</p>
+    <h3>Security Event Analysis</h3>
 
-                    <p>
-                        Generated and analyzed failed authentication activity,
-                        queried Windows security events, and created a custom
-                        detection view for Event ID 4625.
-                    </p>
+    <p>
+        Generated and analyzed centralized Windows security events
+        covering failed authentication, user account creation, and
+        security-enabled local group membership changes.
+    </p>
 
-                    <div class="skill-tags">
-                        <span>Event ID 4625</span>
-                        <span>Authentication</span>
-                        <span>Log Analysis</span>
-                        <span>Detection</span>
-                    </div>
-                </div>
-
+    <div class="skill-tags">
+        <span>Event ID 4625</span>
+        <span>Event ID 4720</span>
+        <span>Event ID 4732</span>
+        <span>Identity Monitoring</span>
+        <span>Log Analysis</span>
+    </div>
+</div>
 
                 <div class="skill-demonstrated-card">
                     <p class="card-label">AUTOMATION</p>
