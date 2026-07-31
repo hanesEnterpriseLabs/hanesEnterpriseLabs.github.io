@@ -83,19 +83,26 @@
                 <div class="project-text">
 
                     <p>
-                        I built a virtualized Windows enterprise environment
-                        consisting of a Windows Server system and Windows 11
-                        client to gain hands-on experience with centralized
-                        identity and security administration.
-                    </p>
+    Built and secured a Windows Active Directory domain environment
+    integrating centralized identity management, Group Policy-based
+    endpoint hardening, advanced security auditing, and centralized
+    event collection.
+</p>
 
-                    <p>
-                        The lab was designed to simulate core components of a
-                        small enterprise Windows environment while providing a
-                        controlled platform for practicing Active Directory,
-                        authentication, networking, policy configuration, and
-                        security monitoring.
-                    </p>
+<p>
+    Extended the environment with Microsoft Sysmon and Windows Event
+    Forwarding to collect enhanced endpoint telemetry from WS01 on
+    DC01. The centralized monitoring architecture provides visibility
+    into authentication, account-management, privilege, process, and
+    network activity.
+</p>
+
+<p>
+    Developed detection and investigation workflows using Windows
+    Security events, Sysmon process telemetry, PowerShell, and custom
+    Event Viewer views to identify failed authentication, identity
+    changes, and PowerShell discovery activity.
+</p>
 
                 </div>
 
@@ -983,6 +990,159 @@ Centralized Endpoint Monitoring</code></pre>
         </p>
 
     </div>
+   <div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">STEP 10</p>
+
+        <h3>PowerShell Detection & Investigation</h3>
+
+        <p>
+            After centralizing Sysmon telemetry from WS01, I used the collected
+            endpoint data to build a detection and investigation workflow for
+            PowerShell activity.
+        </p>
+
+        <p>
+            I first queried the <strong>ForwardedEvents</strong> log on DC01
+            for Sysmon <strong>Event ID 1</strong>, which records process
+            creation activity. Using PowerShell, I extracted investigation
+            fields including the originating workstation, process image,
+            command line, user account, and parent process.
+        </p>
+
+        <p>
+            This allowed PowerShell execution occurring on
+            <strong>WS01.ad.hanes.test</strong> to be investigated centrally
+            from DC01 rather than directly from the endpoint.
+        </p>
+
+        <p>
+            I then generated administrative discovery activity using
+            <strong>Get-LocalGroupMember Administrators</strong>. Sysmon
+            captured the PowerShell process and full command line, and Windows
+            Event Forwarding transported the telemetry to DC01.
+        </p>
+
+        <p>
+            Using the centralized events, I created a custom Event Viewer view
+            named <strong>PowerShell Detection - WS01</strong> to isolate
+            PowerShell process creation originating from the workstation.
+        </p>
+
+        <p>
+            I further refined the detection into
+            <strong>PowerShell Discovery Detection - WS01</strong>, allowing
+            the monitoring environment to identify PowerShell activity
+            associated with local administrator-group discovery.
+        </p>
+
+        <p>
+            This demonstrated a complete detection-engineering workflow:
+            generating endpoint activity, collecting enhanced telemetry,
+            investigating process execution, and developing increasingly
+            targeted detection logic.
+        </p>
+
+        <p class="command-label">Detection Workflow</p>
+
+        <pre class="command-block"><code>PowerShell Activity - WS01
+        │
+        ▼
+Sysmon Event ID 1
+Process Creation
+        │
+        ├── Image
+        ├── CommandLine
+        ├── User
+        └── ParentImage
+        │
+        ▼
+Windows Event Forwarding
+        │
+        ▼
+DC01 - ForwardedEvents
+        │
+        ├── PowerShell Investigation
+        │
+        ├── PowerShell Detection - WS01
+        │
+        └── PowerShell Discovery Detection - WS01
+                    │
+                    ▼
+        Get-LocalGroupMember Administrators
+                    │
+                    ▼
+        Targeted Discovery Detection</code></pre>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/36-centralized-powershell-investigation.png"
+            alt="PowerShell investigation of centralized Sysmon process creation events from WS01"
+        >
+
+        <p class="evidence-caption">
+            Screenshot 36 — PowerShell was used on DC01 to investigate
+            centralized Sysmon Event ID 1 telemetry from WS01 and extract
+            process image, command line, user, and parent-process information.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/37-centralized-powershell-discovery-detection.png"
+            alt="Centralized Sysmon event showing PowerShell local administrator group discovery"
+        >
+
+        <p class="evidence-caption">
+            Screenshot 37 — Centralized Sysmon telemetry captured PowerShell
+            executing Get-LocalGroupMember Administrators on WS01, providing
+            command-line visibility into administrative discovery activity.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/38-powershell-detection-custom-view.png"
+            alt="Custom Event Viewer PowerShell detection view for WS01"
+        >
+
+        <p class="evidence-caption">
+            Screenshot 38 — A custom PowerShell Detection - WS01 view was
+            created on DC01 to isolate centralized PowerShell process-creation
+            events from the workstation.
+        </p>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/active-directory-lab/39-targeted-powershell-discovery-detection.png"
+            alt="Targeted PowerShell discovery detection for WS01"
+        >
+
+        <p class="evidence-caption">
+            Screenshot 39 — The detection was refined into PowerShell Discovery
+            Detection - WS01, isolating the Get-LocalGroupMember Administrators
+            activity as targeted discovery behavior.
+        </p>
+
+    </div>
+
+</div> 
 
 </div>
 
@@ -1431,6 +1591,29 @@ Centralized Collection Restored</code></pre>
         local group membership changes from WS01 on DC01.
     </p>
 </div>
+<div class="outcome-card">
+    <p class="card-label">DETECTION ENGINEERING</p>
+
+    <h3>PowerShell Discovery Detection</h3>
+
+    <p>
+        Used centralized Sysmon process telemetry to identify
+        PowerShell activity originating from WS01 and developed
+        targeted Event Viewer detections for administrative
+        discovery behavior.
+    </p>
+</div>
+<div class="outcome-card">
+    <p class="card-label">INVESTIGATION</p>
+
+    <h3>Centralized Process Analysis</h3>
+
+    <p>
+        Queried Sysmon Event ID 1 telemetry on DC01 to investigate
+        process execution from WS01 using command-line, user,
+        process image, and parent-process data.
+    </p>
+</div>
 
             </div>
 
@@ -1556,35 +1739,42 @@ Centralized Collection Restored</code></pre>
     <h3>Sysmon Monitoring</h3>
 
     <p>
-        Deployed and configured Microsoft Sysmon on WS01 to capture
-        enhanced endpoint telemetry including process creation,
-        network connections, process termination, and file activity.
-        Integrated Sysmon with Windows Event Forwarding to centralize
-        endpoint telemetry on DC01 for security analysis.
+        <p>
+    Deployed and configured Microsoft Sysmon on WS01 to capture
+    enhanced endpoint telemetry including process creation, network
+    connections, process termination, and file activity. Integrated
+    Sysmon with Windows Event Forwarding and used the centralized
+    telemetry for process investigation and PowerShell detection.
+</p>
     </p>
 
     <div class="skill-tags">
-        <span>Sysmon</span>
-        <span>Event ID 1</span>
-        <span>Endpoint Telemetry</span>
-        <span>WEF</span>
-    </div>
+    <span>Sysmon</span>
+    <span>Event ID 1</span>
+    <span>Process Creation</span>
+    <span>Command-Line Analysis</span>
+    <span>Endpoint Telemetry</span>
+    <span>WEF</span>
 </div>
-                <div class="skill-demonstrated-card">
+</div>
+               <div class="skill-demonstrated-card">
     <p class="card-label">DETECTION</p>
     <h3>Security Event Analysis</h3>
 
     <p>
-        Generated and analyzed centralized Windows security events
-        covering failed authentication, user account creation, and
-        security-enabled local group membership changes.
+        Developed and refined centralized detections for Windows
+        authentication, account-management, privilege changes, and
+        PowerShell discovery activity using Windows Security events
+        and Sysmon process telemetry.
     </p>
 
     <div class="skill-tags">
         <span>Event ID 4625</span>
         <span>Event ID 4720</span>
         <span>Event ID 4732</span>
-        <span>Identity Monitoring</span>
+        <span>Sysmon Event ID 1</span>
+        <span>PowerShell Detection</span>
+        <span>Discovery Activity</span>
         <span>Log Analysis</span>
     </div>
 </div>
