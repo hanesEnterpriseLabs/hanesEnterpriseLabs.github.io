@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blue Team Operations & Detection Engineering | Hanes Enterprise Labs</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header>
+  <nav class="navbar">
+    <a href="../index.html" class="logo">Hanes Enterprise Labs</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+    <main>
+
+        <section class="project-hero">
+
+            <div class="section-container">
+
+                <a href="../index.html#projects" class="back-link">
+                    ← Back to Projects
+                </a>
+
+                <p class="section-label">
+                    BLUE TEAM • SECURITY OPERATIONS • DETECTION ENGINEERING
+                </p>
+
+                <h1>
+                    Blue Team Operations &<br>
+                    Detection Engineering
+                </h1>
+
+                <p class="project-hero-description">
+                    Built a centralized Windows monitoring environment using
+                    Advanced Audit Policy, Windows Event Forwarding, Sysmon,
+                    PowerShell, and custom Event Viewer detections to investigate
+                    authentication, identity, process, and discovery activity.
+                </p>
+
+                <div class="project-tech">
+                    <span>Windows Event Forwarding</span>
+                    <span>Sysmon</span>
+                    <span>PowerShell</span>
+                    <span>Event Viewer</span>
+                    <span>Detection Engineering</span>
+                    <span>Windows Security Logs</span>
+                </div>
+                <figure class="project-hero-image">
+
+    <img
+        src="../images/blue-team/35-centralized-sysmon-events-dc01.png"
+        alt="Centralized Sysmon telemetry from WS01 collected on DC01 through Windows Event Forwarding"
+    >
+
+    <figcaption>
+        Centralized Sysmon telemetry from WS01 collected on DC01 through
+        Windows Event Forwarding, supporting endpoint investigation and
+        detection engineering.
+    </figcaption>
+
+</figure>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">01 — OVERVIEW</p>
+                    <h2>Project Overview</h2>
+                </div>
+
+                <div class="project-text">
+
+                    <p>
+                        This project documents the defensive-security layer built
+                        on top of the <strong>ad.hanes.test</strong> Windows domain.
+                        The environment was extended beyond infrastructure and
+                        hardening to provide centralized security visibility,
+                        investigation capability, and targeted detection.
+                    </p>
+
+                    <p>
+                        Advanced Windows auditing generated security-relevant
+                        telemetry on WS01. Windows Event Forwarding transported
+                        those events to DC01, creating a central location for
+                        reviewing endpoint activity without connecting directly
+                        to the workstation.
+                    </p>
+
+                    <p>
+                        Microsoft Sysmon then expanded endpoint visibility with
+                        detailed process, command-line, parent-process, network,
+                        and file telemetry. PowerShell queries and custom Event
+                        Viewer views were used to investigate and refine detections
+                        for failed logons, account changes, group membership
+                        changes, and administrative discovery activity.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section alternate-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">02 — ENVIRONMENT</p>
+                    <h2>Monitoring Architecture</h2>
+                </div>
+
+                <div class="environment-grid">
+
+                    <div class="environment-card">
+                        <p class="card-label">SOURCE ENDPOINT</p>
+                        <h3>WS01</h3>
+
+                        <p>
+                            Windows 11 workstation generating Windows Security
+                            and Sysmon telemetry for centralized collection and
+                            investigation.
+                        </p>
+                    </div>
+
+                    <div class="environment-card">
+                        <p class="card-label">EVENT COLLECTOR</p>
+                        <h3>DC01</h3>
+
+                        <p>
+                            Windows Server domain controller configured as the
+                            centralized Windows Event Collector and investigation
+                            workstation.
+                        </p>
+                    </div>
+
+                    <div class="environment-card">
+                        <p class="card-label">TELEMETRY PIPELINE</p>
+                        <h3>WEF + Sysmon</h3>
+
+                        <p>
+                            Windows Event Forwarding transported native Windows
+                            and enhanced Sysmon telemetry from WS01 to DC01.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">03 — METHODOLOGY</p>
+                    <h2>Detection Workflow</h2>
+                </div>
+
+                <div class="methodology-list">
+
+                    <div class="methodology-item">
+                        <span class="method-number">01</span>
+                        <div>
+                            <h3>Enable Security Auditing</h3>
+                            <p>
+                                Configured Advanced Audit Policy through Group
+                                Policy to generate authentication, account,
+                                logon, and process events.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-item">
+                        <span class="method-number">02</span>
+                        <div>
+                            <h3>Centralize Windows Events</h3>
+                            <p>
+                                Implemented Windows Event Forwarding from WS01
+                                to the Forwarded Events log on DC01.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-item">
+                        <span class="method-number">03</span>
+                        <div>
+                            <h3>Validate Identity Monitoring</h3>
+                            <p>
+                                Generated and analyzed failed logons, user account
+                                creation, and security-enabled local group changes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-item">
+                        <span class="method-number">04</span>
+                        <div>
+                            <h3>Deploy Enhanced Telemetry</h3>
+                            <p>
+                                Installed Sysmon on WS01 and forwarded its
+                                operational events to DC01.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-item">
+                        <span class="method-number">05</span>
+                        <div>
+                            <h3>Investigate Process Activity</h3>
+                            <p>
+                                Queried centralized Sysmon Event ID 1 telemetry
+                                with PowerShell to extract process and command-line
+                                details.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="methodology-item">
+                        <span class="method-number">06</span>
+                        <div>
+                            <h3>Develop Targeted Detections</h3>
+                            <p>
+                                Built broad and targeted Event Viewer detections
+                                for PowerShell execution and administrative
+                                discovery behavior.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section alternate-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">04 — EVIDENCE</p>
+                    <h2>Technical Walkthrough</h2>
+                </div>
+
+                <div class="project-text">
+
+
+                    <!-- STEP 01 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 01</p>
+
+                            <h3>Advanced Audit Policy</h3>
+
+                            <p>
+                                I configured Advanced Audit Policy through Group
+                                Policy to generate security-relevant telemetry
+                                across the domain environment.
+                            </p>
+
+                            <p>
+                                Auditing was enabled for Account Logon, Account
+                                Management, Detailed Tracking, and Logon/Logoff.
+                                These categories provide visibility into
+                                authentication, identity changes, process
+                                creation, and user session activity.
+                            </p>
+
+                            <p>
+                                This established the native Windows telemetry
+                                foundation required for centralized monitoring
+                                and later detection engineering.
+                            </p>
+
+                            <p class="command-label">Audit Policy Coverage</p>
+
+                            <pre class="command-block"><code>Advanced Audit Policy
+│
+├── Account Logon
+│   └── Authentication Activity
+│
+├── Account Management
+│   └── User & Group Changes
+│
+├── Detailed Tracking
+│   └── Process Creation Activity
+│
+└── Logon/Logoff
+    └── User Session Activity
+
+Deployment: Group Policy
+Environment: ad.hanes.test
+Purpose: Security Monitoring & Detection</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/13-advanced-audit-policy.png"
+                                alt="Advanced Audit Policy categories configured through Group Policy"
+                            >
+
+                            <p class="evidence-caption">
+                                Advanced Audit Policy generated authentication,
+                                account-management, process-tracking, and logon
+                                telemetry across the Windows environment.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 02 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 02</p>
+
+                            <h3>Centralized Logging with Windows Event Forwarding</h3>
+
+                            <p>
+                                I implemented Windows Event Forwarding to collect
+                                security events from WS01 on DC01.
+                            </p>
+
+                            <p>
+                                Relevant endpoint events were forwarded into the
+                                <strong>Forwarded Events</strong> log, creating a
+                                centralized location for monitoring and
+                                investigation.
+                            </p>
+
+                            <p>
+                                Successful collection was validated in Event
+                                Viewer using Windows security telemetry generated
+                                by the workstation.
+                            </p>
+
+                            <p class="command-label">Collection Architecture</p>
+
+                            <pre class="command-block"><code>WS01
+│
+├── Windows Security Log
+├── Advanced Audit Policy
+└── Security Events
+        │
+        │  Windows Event Forwarding
+        ▼
+DC01
+│
+└── Forwarded Events
+    ├── Centralized Telemetry
+    └── Security Investigation</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/14-windows-event-forwarding.png"
+                                alt="Windows Event Forwarding collecting WS01 security events on DC01"
+                            >
+
+                            <p class="evidence-caption">
+                                DC01 successfully collected Windows security
+                                events generated by WS01 through Windows Event
+                                Forwarding.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 03 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 03</p>
+
+                            <h3>Failed Logon Detection & Investigation</h3>
+
+                            <p>
+                                I generated controlled failed authentication
+                                attempts from WS01 to test the centralized
+                                monitoring workflow.
+                            </p>
+
+                            <p>
+                                Windows recorded the activity as
+                                <strong>Event ID 4625</strong>. I queried the
+                                centralized event data with PowerShell and
+                                created a custom Event Viewer view named
+                                <strong>Failed Logon Detection - WS01</strong>.
+                            </p>
+
+                            <p>
+                                This demonstrated a complete workflow from
+                                activity generation and collection to targeted
+                                analysis and repeatable detection.
+                            </p>
+
+                            <p class="command-label">Detection Workflow</p>
+
+                            <pre class="command-block"><code>Failed Authentication Attempt
+        │
+        ▼
+WS01 Security Log
+        │
+        │  Event ID 4625
+        ▼
+Windows Event Forwarding
+        │
+        ▼
+DC01 - Forwarded Events
+        │
+        ├── PowerShell Query
+        └── Custom Event View</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/15-failed-logon-powershell.png"
+                                alt="PowerShell query showing centralized Event ID 4625 failed logon events"
+                            >
+
+                            <p class="evidence-caption">
+                                PowerShell was used on DC01 to identify
+                                centralized Event ID 4625 records originating
+                                from WS01.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/16-failed-logon-detection.png"
+                                alt="Custom Event Viewer view detecting Event ID 4625"
+                            >
+
+                            <p class="evidence-caption">
+                                A custom Event Viewer view provided a repeatable
+                                method for reviewing failed authentication
+                                activity from WS01.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 04 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 04</p>
+
+                            <h3>Expanded Identity & Access Monitoring</h3>
+
+                            <p>
+                                I expanded centralized detection beyond failed
+                                authentication to cover account lifecycle and
+                                access-control activity.
+                            </p>
+
+                            <p>
+                                <strong>Event ID 4720</strong> identified user
+                                account creation, while
+                                <strong>Event ID 4732</strong> identified a member
+                                being added to a security-enabled local group.
+                            </p>
+
+                            <p>
+                                Both events were collected on DC01 through the
+                                same Windows Event Forwarding architecture used
+                                for failed-logon monitoring.
+                            </p>
+
+                            <p class="command-label">Identity Detection Coverage</p>
+
+                            <pre class="command-block"><code>Event ID 4625
+└── Failed Logon
+
+Event ID 4720
+└── User Account Created
+
+Event ID 4732
+└── Member Added to Security-Enabled Local Group
+
+Source Endpoint: WS01
+Collector: DC01</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/29-centralized-4720-user-account-creation-detection.png"
+                                alt="Centralized Event ID 4720 showing user account creation"
+                            >
+
+                            <p class="evidence-caption">
+                                Event ID 4720 provided
+                                centralized visibility into user account
+                                creation on WS01.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/30-centralized-4732-local-group-membership-change.png"
+                                alt="Centralized Event ID 4732 showing local group membership change"
+                            >
+
+                            <p class="evidence-caption">
+                                Event ID 4732 provided
+                                centralized visibility into security group
+                                membership and access-control changes.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 05 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 05</p>
+
+                            <h3>Sysmon Deployment & Centralized Endpoint Telemetry</h3>
+
+                            <p>
+                                I deployed Microsoft Sysmon on WS01 using a
+                                custom configuration to capture enhanced
+                                endpoint activity.
+                            </p>
+
+                            <p>
+                                Sysmon Event ID 1 provided process image,
+                                command-line, user, hash, and parent-process
+                                context. Additional telemetry included network
+                                connections, process termination, and file
+                                creation.
+                            </p>
+
+                            <p>
+                                The Sysmon Operational log was integrated with
+                                Windows Event Forwarding, allowing enhanced
+                                endpoint events to be collected centrally on
+                                DC01.
+                            </p>
+
+                            <p class="command-label">Endpoint Telemetry Workflow</p>
+
+                            <pre class="command-block"><code>WS01 Endpoint Activity
+        │
+        ▼
+Microsoft Sysmon
+        │
+        ├── Event ID 1  - Process Creation
+        ├── Event ID 3  - Network Connection
+        ├── Event ID 5  - Process Termination
+        └── Event ID 11 - File Creation
+        │
+        ▼
+Windows Event Forwarding
+        │
+        ▼
+DC01 - Forwarded Events</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/31-sysmon-installation-success.png"
+                                alt="Successful Sysmon installation on WS01"
+                            >
+
+                            <p class="evidence-caption">
+                                Sysmon was successfully
+                                installed and configured on WS01.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/33-sysmon-process-creation-notepad.png"
+                                alt="Sysmon Event ID 1 process creation telemetry"
+                            >
+
+                            <p class="evidence-caption">
+                                Sysmon Event ID 1 captured
+                                detailed process-creation and command-line
+                                telemetry.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/35-centralized-sysmon-events-dc01.png"
+                                alt="Centralized Sysmon telemetry on DC01"
+                            >
+
+                            <p class="evidence-caption">
+                                Sysmon events from WS01 were
+                                successfully collected in the Forwarded Events
+                                log on DC01.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- STEP 06 -->
+                    <div class="evidence-item">
+
+                        <div class="evidence-text">
+
+                            <p class="section-label">STEP 06</p>
+
+                            <h3>PowerShell Detection & Investigation</h3>
+
+                            <p>
+                                I used PowerShell on DC01 to query centralized
+                                Sysmon Event ID 1 telemetry and extract the
+                                originating workstation, process image,
+                                command line, user, and parent process.
+                            </p>
+
+                            <p>
+                                I then generated administrative discovery using
+                                <strong>Get-LocalGroupMember Administrators</strong>.
+                                Sysmon captured the complete PowerShell command
+                                line and Windows Event Forwarding transported it
+                                to DC01.
+                            </p>
+
+                            <p>
+                                A broad custom view named
+                                <strong>PowerShell Detection - WS01</strong> was
+                                created first. The logic was then refined into
+                                <strong>PowerShell Discovery Detection - WS01</strong>
+                                to isolate the targeted discovery behavior.
+                            </p>
+
+                            <p class="command-label">Detection Engineering Workflow</p>
+
+                            <pre class="command-block"><code>PowerShell Activity - WS01
+        │
+        ▼
+Sysmon Event ID 1
+        │
+        ├── Image
+        ├── CommandLine
+        ├── User
+        └── ParentImage
+        │
+        ▼
+DC01 - Forwarded Events
+        │
+        ├── PowerShell Investigation
+        ├── Broad PowerShell Detection
+        └── Targeted Discovery Detection</code></pre>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/36-centralized-powershell-investigation.png"
+                                alt="PowerShell investigation of centralized Sysmon telemetry"
+                            >
+
+                            <p class="evidence-caption">
+                                Centralized Sysmon process
+                                telemetry was queried with PowerShell for
+                                investigation.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/37-centralized-powershell-discovery-detection.png"
+                                alt="Centralized PowerShell discovery event"
+                            >
+
+                            <p class="evidence-caption">
+                                The complete
+                                Get-LocalGroupMember Administrators command was
+                                visible in centralized Sysmon telemetry.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/38-powershell-detection-custom-view.png"
+                                alt="Custom PowerShell detection view for WS01"
+                            >
+
+                            <p class="evidence-caption">
+                                A broad custom Event Viewer
+                                view isolated PowerShell process creation from
+                                WS01.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/39-targeted-powershell-discovery-detection.png"
+                                alt="Targeted PowerShell discovery detection"
+                            >
+
+                            <p class="evidence-caption">
+                                The detection was refined to
+                                isolate local administrator-group discovery.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">05 — TROUBLESHOOTING</p>
+                    <h2>Troubleshooting & Problem Solving</h2>
+                </div>
+
+                <div class="project-text">
+
+                    <p>
+                        Extending the environment with Sysmon introduced a
+                        Windows Event Forwarding issue that required validation
+                        across the endpoint, collector, services, permissions,
+                        and subscription state.
+                    </p>
+
+
+                    <div class="troubleshooting-item">
+
+                        <p class="section-label">ISSUE 01</p>
+
+                        <h3>Windows Event Forwarding & Sysmon Collection</h3>
+
+                        <p>
+                            The WS01 event source entered a
+                            <strong>Trying</strong> state and returned a WSMan
+                            connectivity error. An initial Sysmon log query on
+                            DC01 also failed because Sysmon was installed on the
+                            source endpoint rather than the collector.
+                        </p>
+
+                        <p>
+                            I validated WinRM on DC01, tested WSMan connectivity
+                            from WS01, confirmed WinRM and Sysmon64 were running
+                            on the endpoint, and reviewed event-log access
+                            permissions.
+                        </p>
+
+                        <p>
+                            After correcting the forwarding configuration, I
+                            revalidated the subscription with
+                            <strong>wecutil</strong>. The subscription and WS01
+                            event source both returned
+                            <strong>RuntimeStatus: Active</strong> and
+                            <strong>LastError: 0</strong>.
+                        </p>
+
+
+                        <div class="troubleshooting-grid">
+
+                            <div class="troubleshooting-detail">
+                                <h4>Problem</h4>
+                                <p>
+                                    WS01 remained in a Trying state with a
+                                    WSMan connectivity failure.
+                                </p>
+                            </div>
+
+                            <div class="troubleshooting-detail">
+                                <h4>Action</h4>
+                                <p>
+                                    Validated services, connectivity,
+                                    permissions, endpoint telemetry, and
+                                    collector roles.
+                                </p>
+                            </div>
+
+                            <div class="troubleshooting-detail">
+                                <h4>Validation</h4>
+                                <p>
+                                    Confirmed RuntimeStatus Active and
+                                    LastError 0 after correcting the
+                                    forwarding configuration.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <p class="command-label">Troubleshooting Workflow</p>
+
+                        <pre class="command-block"><code>WEC / Sysmon Collection Issue
+        │
+        ▼
+Review Subscription
+        │
+        ├── RuntimeStatus: Trying
+        └── WSMan Connectivity Error
+        │
+        ▼
+Validate DC01
+        └── WinRM Running
+        │
+        ▼
+Validate WS01
+        ├── Test-WSMan DC01
+        ├── WinRM Running
+        ├── Sysmon64 Running
+        └── Event Log Permissions
+        │
+        ▼
+Correct Configuration
+        │
+        ▼
+RuntimeStatus: Active
+LastError: 0</code></pre>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/troubleshooting 3.png"
+                                alt="WEF and Sysmon troubleshooting errors"
+                            >
+
+                            <p class="evidence-caption">
+                                Initial validation exposed the WSMan
+                                connectivity and Sysmon-channel issues.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/Troubleshooting 4.png"
+                                alt="DC01 WinRM service validation"
+                            >
+
+                            <p class="evidence-caption">
+                                Collector-side validation confirmed WinRM was
+                                running on DC01 and clarified the collector's
+                                role.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/Troubleshooting 5.png"
+                                alt="WS01 WinRM Sysmon and permission validation"
+                            >
+
+                            <p class="evidence-caption">
+                                Endpoint validation confirmed WSMan
+                                connectivity, running services, and event-log
+                                access configuration.
+                            </p>
+
+                        </div>
+
+
+                        <div class="evidence-image">
+
+                            <img
+                                src="../images/blue-team/troubleshooting 6.png"
+                                alt="WEC subscription restored"
+                            >
+
+                            <p class="evidence-caption">
+                                Final validation showed the subscription and
+                                WS01 source active with LastError 0.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section alternate-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">06 — SECURITY OUTCOMES</p>
+                    <h2>Defensive Security Outcomes</h2>
+                </div>
+
+                <div class="project-text">
+
+                    <p>
+                        The completed environment demonstrates the progression
+                        from telemetry generation and centralization to
+                        investigation and targeted detection engineering.
+                    </p>
+
+
+                    <div class="outcomes-grid">
+
+                        <div class="outcome-card">
+                            <p class="card-label">AUDITING</p>
+                            <h3>Security Event Generation</h3>
+                            <p>
+                                Enabled advanced Windows auditing for
+                                authentication, identity, logon, and process
+                                activity.
+                            </p>
+                        </div>
+
+                        <div class="outcome-card">
+                            <p class="card-label">LOG MANAGEMENT</p>
+                            <h3>Centralized Event Collection</h3>
+                            <p>
+                                Implemented Windows Event Forwarding from WS01
+                                to DC01.
+                            </p>
+                        </div>
+
+                        <div class="outcome-card">
+                            <p class="card-label">IDENTITY MONITORING</p>
+                            <h3>Authentication & Account Detection</h3>
+                            <p>
+                                Monitored Event IDs 4625, 4720, and 4732 for
+                                failed logons and identity/access changes.
+                            </p>
+                        </div>
+
+                        <div class="outcome-card">
+                            <p class="card-label">ENDPOINT VISIBILITY</p>
+                            <h3>Centralized Sysmon Telemetry</h3>
+                            <p>
+                                Collected enhanced process, network, and file
+                                activity from the endpoint.
+                            </p>
+                        </div>
+
+                        <div class="outcome-card">
+                            <p class="card-label">INVESTIGATION</p>
+                            <h3>Centralized Process Analysis</h3>
+                            <p>
+                                Queried process image, command line, user, and
+                                parent-process details with PowerShell.
+                            </p>
+                        </div>
+
+                        <div class="outcome-card">
+                            <p class="card-label">DETECTION ENGINEERING</p>
+                            <h3>PowerShell Discovery Detection</h3>
+                            <p>
+                                Built and refined detections for targeted
+                                administrative discovery activity.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">07 — SKILLS DEMONSTRATED</p>
+                    <h2>Technical Skills Demonstrated</h2>
+                </div>
+
+                <div class="project-text">
+
+                    <p>
+                        This project required working across Windows telemetry,
+                        event collection, endpoint visibility, investigation,
+                        detection design, and troubleshooting.
+                    </p>
+
+
+                    <div class="skills-demonstrated-grid">
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">LOGGING</p>
+                            <h3>Windows Event Forwarding</h3>
+                            <p>
+                                Configured and validated centralized Windows
+                                event collection.
+                            </p>
+                            <div class="skill-tags">
+                                <span>WEF</span>
+                                <span>WEC</span>
+                                <span>Forwarded Events</span>
+                                <span>WinRM</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">ENDPOINT TELEMETRY</p>
+                            <h3>Sysmon</h3>
+                            <p>
+                                Deployed enhanced process, network, and file
+                                telemetry on WS01.
+                            </p>
+                            <div class="skill-tags">
+                                <span>Sysmon</span>
+                                <span>Event ID 1</span>
+                                <span>Command Line</span>
+                                <span>Parent Process</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">DETECTION</p>
+                            <h3>Windows Security Analysis</h3>
+                            <p>
+                                Analyzed authentication, account-management,
+                                group membership, and process events.
+                            </p>
+                            <div class="skill-tags">
+                                <span>4625</span>
+                                <span>4720</span>
+                                <span>4732</span>
+                                <span>Event Viewer</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">INVESTIGATION</p>
+                            <h3>PowerShell Log Analysis</h3>
+                            <p>
+                                Queried centralized events and extracted
+                                investigation fields from Sysmon telemetry.
+                            </p>
+                            <div class="skill-tags">
+                                <span>PowerShell</span>
+                                <span>Get-WinEvent</span>
+                                <span>Filtering</span>
+                                <span>Process Analysis</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">DETECTION ENGINEERING</p>
+                            <h3>Custom Event Views</h3>
+                            <p>
+                                Created broad and targeted custom detections for
+                                PowerShell and discovery behavior.
+                            </p>
+                            <div class="skill-tags">
+                                <span>Custom Views</span>
+                                <span>PowerShell Detection</span>
+                                <span>Discovery</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-demonstrated-card">
+                            <p class="card-label">TROUBLESHOOTING</p>
+                            <h3>Monitoring Pipeline Validation</h3>
+                            <p>
+                                Diagnosed WEF, WSMan, service, permission, and
+                                telemetry-source issues.
+                            </p>
+                            <div class="skill-tags">
+                                <span>wecutil</span>
+                                <span>Test-WSMan</span>
+                                <span>Services</span>
+                                <span>Root Cause Analysis</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-detail-section alternate-section">
+
+            <div class="section-container project-content">
+
+                <div class="project-section-heading">
+                    <p class="section-label">08 — LESSONS LEARNED</p>
+                    <h2>Lessons Learned & Project Takeaways</h2>
+                </div>
+
+                <div class="project-text">
+
+                    <p>
+                        Building the monitoring environment reinforced that
+                        useful detection depends on both telemetry quality and
+                        reliable collection. Logs only become valuable when the
+                        required audit settings are enabled, the events reach a
+                        central location, and the analyst can query and interpret
+                        the resulting data.
+                    </p>
+
+
+                    <div class="lessons-grid">
+
+                        <div class="lesson-card">
+                            <p class="card-label">01 — TELEMETRY</p>
+                            <h3>Visibility Must Be Engineered</h3>
+                            <p>
+                                Useful security data requires intentional audit
+                                and Sysmon configuration.
+                            </p>
+                        </div>
+
+                        <div class="lesson-card">
+                            <p class="card-label">02 — COLLECTION</p>
+                            <h3>Centralization Enables Investigation</h3>
+                            <p>
+                                WEF created a repeatable location for reviewing
+                                endpoint activity.
+                            </p>
+                        </div>
+
+                        <div class="lesson-card">
+                            <p class="card-label">03 — CONTEXT</p>
+                            <h3>Command Lines Add Meaning</h3>
+                            <p>
+                                Sysmon process context made PowerShell activity
+                                significantly more useful for investigation.
+                            </p>
+                        </div>
+
+                        <div class="lesson-card">
+                            <p class="card-label">04 — DETECTION</p>
+                            <h3>Start Broad, Then Refine</h3>
+                            <p>
+                                A broad PowerShell view was useful for
+                                validation before building targeted discovery
+                                detection.
+                            </p>
+                        </div>
+
+                        <div class="lesson-card">
+                            <p class="card-label">05 — TROUBLESHOOTING</p>
+                            <h3>Validate the Entire Pipeline</h3>
+                            <p>
+                                Source, services, permissions, transport,
+                                subscription, and collector status all matter.
+                            </p>
+                        </div>
+
+                        <div class="lesson-card">
+                            <p class="card-label">06 — ANALYSIS</p>
+                            <h3>Collection Is Only the Beginning</h3>
+                            <p>
+                                Security value comes from filtering, reviewing,
+                                and converting raw events into repeatable
+                                detections.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="project-takeaway">
+
+                        <p class="card-label">FINAL TAKEAWAY</p>
+
+                        <h3>From Centralized Logging to Detection Engineering</h3>
+
+                        <p>
+                            This project transformed a Windows domain into a
+                            small defensive-security environment capable of
+                            generating, forwarding, investigating, and detecting
+                            security-relevant endpoint activity.
+                        </p>
+
+                        <p>
+                            The completed workflow demonstrates practical
+                            experience with the core blue-team cycle:
+                            telemetry collection, centralized visibility,
+                            investigation, detection development, refinement,
+                            and validation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="project-footer-section">
+
+            <div class="section-container">
+
+                <div class="project-footer">
+
+                    <div class="project-footer-text">
+
+                        <p class="section-label">PROJECT COMPLETE</p>
+
+                        <h2>Blue Team Operations & Detection Engineering</h2>
+
+                        <p>
+                            Centralized Windows monitoring focused on security
+                            auditing, WEF, Sysmon, PowerShell investigation,
+                            identity detection, and targeted discovery analysis.
+                        </p>
+
+                    </div>
+
+
+                    <div class="project-footer-actions">
+
+                        <a href="../index.html#projects" class="btn secondary-btn">
+                            ← Back to Projects
+                        </a>
+
+                        <a href="offensive-security.html" class="btn primary-btn">
+                            View Offensive Security →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+
+</html>

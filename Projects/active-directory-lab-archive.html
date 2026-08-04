@@ -297,12 +297,12 @@ Domain Controller: DC01</code></pre>
         </div>
 
         <div class="evidence-image">
-            <img src="../images/active-directory-lab/AD_DS_DNS.png"
+            <img src="../images/blue-team/AD_DS_DNS.png"
                  alt="Active Directory Domain Services and DNS installation on DC01">
         </div>
 
         <div class="evidence-image">
-            <img src="../images/active-directory-lab/01-domain-controller-dc01.png"
+            <img src="../images/blue-team/01-domain-controller-dc01.png"
                  alt="DC01 listed as the domain controller for ad.hanes.test">
         </div>
         <div class="evidence-item">
@@ -351,12 +351,12 @@ Domain Controller: DC01</code></pre>
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/02-organizational-units.png"
+        <img src="../images/blue-team/02-organizational-units.png"
              alt="Active Directory organizational unit structure for the ad.hanes.test domain">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/03-domain-users.png"
+        <img src="../images/blue-team/03-domain-users.png"
              alt="Department user accounts organized in Active Directory">
     </div>
     <div class="evidence-item">
@@ -396,12 +396,12 @@ GG-ServerAdmins</code></pre>
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/04-security-groups.png"
+        <img src="../images/blue-team/04-security-groups.png"
              alt="Active Directory departmental security groups">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/05-rbac-it-membership.png"
+        <img src="../images/blue-team/05-rbac-it-membership.png"
              alt="GG-IT security group membership showing assigned IT users">
     </div>
   <div class="evidence-item">
@@ -446,17 +446,17 @@ Secure Channel: True</code></pre>
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/06-domain-connectivity.png"
+        <img src="../images/blue-team/06-domain-connectivity.png"
              alt="WS01 connectivity and DNS validation with the domain controller">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/07-ws01-workstation-ou.png"
+        <img src="../images/blue-team/07-ws01-workstation-ou.png"
              alt="WS01 computer object located in the Active Directory Workstations OU">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/08-domain-authentication.png"
+        <img src="../images/blue-team/08-domain-authentication.png"
              alt="Domain authentication and secure channel validation from WS01">
     </div>
     <div class="evidence-item">
@@ -509,22 +509,22 @@ Endpoint: WS01</code></pre>
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/09-workstation-security-gpo.png"
+        <img src="../images/blue-team/09-workstation-security-gpo.png"
              alt="Workstation Security Baseline Group Policy linked to the Workstations OU">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/10-firewall-security-baseline.png"
+        <img src="../images/blue-team/10-firewall-security-baseline.png"
              alt="Windows Defender Firewall security settings configured through Group Policy">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/11-defender-realtime-protection.png"
+        <img src="../images/blue-team/11-defender-realtime-protection.png"
              alt="Microsoft Defender real-time protection configured through Group Policy">
     </div>
 
     <div class="evidence-image">
-        <img src="../images/active-directory-lab/12-gpo-applied-ws01.png"
+        <img src="../images/blue-team/12-gpo-applied-ws01.png"
              alt="WS01 confirming that the Workstation Security Baseline Group Policy was applied">
     </div>
     <div class="evidence-item">
@@ -594,7 +594,7 @@ Purpose: Security Monitoring & Detection</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/13-advanced-audit-policy.png"
+            src="../images/blue-team/13-advanced-audit-policy.png"
             alt="Advanced Audit Policy categories configured through Group Policy"
         >
 
@@ -676,7 +676,7 @@ Purpose: Centralized Security Monitoring</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/14-windows-event-forwarding.png"
+            src="../images/blue-team/14-windows-event-forwarding.png"
             alt="Windows Event Forwarding collecting WS01 security events on DC01"
         >
 
@@ -764,7 +764,7 @@ Purpose: Authentication Failure Detection</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/15-failed-logon-powershell.png"
+            src="../images/blue-team/15-failed-logon-powershell.png"
             alt="PowerShell query showing centralized Event ID 4625 failed logon events from WS01"
         >
 
@@ -780,7 +780,7 @@ Purpose: Authentication Failure Detection</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/16-failed-logon-detection.png"
+            src="../images/blue-team/16-failed-logon-detection.png"
             alt="Custom Event Viewer view detecting Event ID 4625 failed logon events from WS01"
         >
 
@@ -847,7 +847,7 @@ Collection Method: Windows Event Forwarding</code></pre>
 <div class="evidence-image">
 
     <img
-        src="../images/active-directory-lab/29-centralized-4720-user-account-creation-detection.png"
+        src="../images/blue-team/29-centralized-4720-user-account-creation-detection.png"
         alt="Centralized Event ID 4720 showing user account creation activity from WS01"
     >
 
@@ -863,7 +863,7 @@ Collection Method: Windows Event Forwarding</code></pre>
 <div class="evidence-image">
 
     <img
-        src="../images/active-directory-lab/30-centralized-4732-local-group-membership-change.png"
+        src="../images/blue-team/30-centralized-4732-local-group-membership-change.png"
         alt="Centralized Event ID 4732 showing a local security group membership change from WS01"
     >
 
@@ -948,7 +948,7 @@ Centralized Endpoint Monitoring</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/31-sysmon-installation-success.png"
+            src="../images/blue-team/31-sysmon-installation-success.png"
             alt="PowerShell showing successful Sysmon installation and configuration on WS01"
         >
 
@@ -963,7 +963,7 @@ Centralized Endpoint Monitoring</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/33-sysmon-process-creation-notepad.png"
+            src="../images/blue-team/33-sysmon-process-creation-notepad.png"
             alt="Sysmon Event ID 1 showing detailed process creation telemetry for Notepad on WS01"
         >
 
@@ -979,7 +979,7 @@ Centralized Endpoint Monitoring</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/35-centralized-sysmon-events-dc01.png"
+            src="../images/blue-team/35-centralized-sysmon-events-dc01.png"
             alt="PowerShell on DC01 showing centralized Sysmon events forwarded from WS01"
         >
 
@@ -1082,7 +1082,7 @@ DC01 - ForwardedEvents
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/36-centralized-powershell-investigation.png"
+            src="../images/blue-team/36-centralized-powershell-investigation.png"
             alt="PowerShell investigation of centralized Sysmon process creation events from WS01"
         >
 
@@ -1098,7 +1098,7 @@ DC01 - ForwardedEvents
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/37-centralized-powershell-discovery-detection.png"
+            src="../images/blue-team/37-centralized-powershell-discovery-detection.png"
             alt="Centralized Sysmon event showing PowerShell local administrator group discovery"
         >
 
@@ -1114,7 +1114,7 @@ DC01 - ForwardedEvents
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/38-powershell-detection-custom-view.png"
+            src="../images/blue-team/38-powershell-detection-custom-view.png"
             alt="Custom Event Viewer PowerShell detection view for WS01"
         >
 
@@ -1130,7 +1130,7 @@ DC01 - ForwardedEvents
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/39-targeted-powershell-discovery-detection.png"
+            src="../images/blue-team/39-targeted-powershell-discovery-detection.png"
             alt="Targeted PowerShell discovery detection for WS01"
         >
 
@@ -1269,7 +1269,7 @@ Address: 192.168.10.10</code></pre>
                 <div class="evidence-image">
 
                     <img
-                        src="../images/active-directory-lab/17-dns-registration-corrected.png"
+                        src="../images/blue-team/17-dns-registration-corrected.png"
                         alt="PowerShell verification showing corrected DNS registration for DC01"
                     >
 
@@ -1399,7 +1399,7 @@ Centralized Collection Restored</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/troubleshooting 3.png"
+            src="../images/blue-team/troubleshooting 3.png"
             alt="Windows Event Collector troubleshooting showing WSMan connectivity and Sysmon channel errors"
         >
 
@@ -1418,7 +1418,7 @@ Centralized Collection Restored</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/Troubleshooting 4.png"
+            src="../images/blue-team/Troubleshooting 4.png"
             alt="PowerShell troubleshooting on DC01 validating the Windows Remote Management service"
         >
 
@@ -1436,7 +1436,7 @@ Centralized Collection Restored</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/Troubleshooting 5.png"
+            src="../images/blue-team/Troubleshooting 5.png"
             alt="WS01 PowerShell validation showing WSMan connectivity, WinRM, Sysmon, and Event Log Readers membership"
         >
 
@@ -1454,7 +1454,7 @@ Centralized Collection Restored</code></pre>
     <div class="evidence-image">
 
         <img
-            src="../images/active-directory-lab/troubleshooting 6.png"
+            src="../images/blue-team/troubleshooting 6.png"
             alt="Windows Event Collector subscription showing WS01 active with LastError zero"
         >
 

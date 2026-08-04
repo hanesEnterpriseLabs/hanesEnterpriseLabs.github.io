@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Security Infrastructure | Hanes Enterprise Labs</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <a href="../index.html" class="logo">Hanes Enterprise Labs</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#home">Home</a></li>
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#skills">Skills</a></li>
+      <li><a href="../resume.html">Resume</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section class="project-hero">
+  <div class="section-container">
+    <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+    <p class="section-label">ENTERPRISE SECURITY • WINDOWS INFRASTRUCTURE</p>
+    <h1>Enterprise Security Infrastructure</h1>
+    <p class="project-hero-description">
+      Built and secured a Windows enterprise environment using Windows Server,
+      Active Directory, DNS, Group Policy, identity management, domain-joined
+      endpoints, and centralized security configuration.
+    </p>
+    <div class="project-tech">
+      <span>Windows Server 2022</span><span>Active Directory</span><span>DNS</span>
+      <span>Group Policy</span><span>Windows 11</span><span>PowerShell</span>
+    </div>
+    <figure class="project-hero-image">
+
+    <img
+        src="../images/enterprise-security/01-domain-controller-dc01.png"
+        alt="DC01 configured as the domain controller for the ad.hanes.test Active Directory domain"
+    >
+
+    <figcaption>
+        Windows Server 2022 configured as DC01, providing Active Directory
+        Domain Services, DNS, authentication, and centralized administration
+        for the ad.hanes.test enterprise environment.
+    </figcaption>
+
+</figure>
+  </div>
+</section>
+
+<section class="project-detail-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">01 — OVERVIEW</p>
+      <h2>Project Overview</h2>
+    </div>
+    <div class="project-text">
+      <p>
+        This project documents the design, deployment, and security hardening
+        of a Windows enterprise environment built around the
+        <strong>ad.hanes.test</strong> Active Directory domain.
+      </p>
+      <p>
+        The environment provides centralized identity management, domain
+        authentication, name resolution, role-based access, security policy
+        enforcement, and workstation administration through Windows Server
+        and Group Policy.
+      </p>
+      <p>
+        The finished infrastructure established a stable foundation for later
+        blue-team monitoring and detection work while remaining focused on
+        the core enterprise services required to manage Windows systems securely.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section alternate-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">02 — ENVIRONMENT</p>
+      <h2>Lab Architecture</h2>
+    </div>
+    <div class="environment-grid">
+      <div class="environment-card">
+        <p class="card-label">DOMAIN CONTROLLER</p>
+        <h3>DC01</h3>
+        <p>Windows Server 2022 providing AD DS, DNS, authentication, Group Policy, and centralized administration.</p>
+      </div>
+      <div class="environment-card">
+        <p class="card-label">DOMAIN CLIENT</p>
+        <h3>WS01</h3>
+        <p>Windows 11 workstation used to validate domain membership, authentication, policy deployment, and hardening.</p>
+      </div>
+      <div class="environment-card">
+        <p class="card-label">VIRTUALIZATION</p>
+        <h3>VirtualBox</h3>
+        <p>Isolated virtualization platform used to deploy and manage the server and workstation systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">03 — METHODOLOGY</p>
+      <h2>Deployment Process</h2>
+    </div>
+    <div class="methodology-list">
+      <div class="methodology-item"><span class="method-number">01</span><div><h3>Virtual Machine Deployment</h3><p>Deployed Windows Server 2022 and Windows 11 virtual machines in VirtualBox.</p></div></div>
+      <div class="methodology-item"><span class="method-number">02</span><div><h3>Network & DNS Configuration</h3><p>Configured IP addressing, internal DNS, and communication between DC01 and WS01.</p></div></div>
+      <div class="methodology-item"><span class="method-number">03</span><div><h3>Active Directory Deployment</h3><p>Installed AD DS and promoted DC01 as the domain controller for ad.hanes.test.</p></div></div>
+      <div class="methodology-item"><span class="method-number">04</span><div><h3>Identity & Access Design</h3><p>Created OUs, users, administrative accounts, computers, and role-based groups.</p></div></div>
+      <div class="methodology-item"><span class="method-number">05</span><div><h3>Domain Integration</h3><p>Joined WS01 to the domain and validated OU placement and secure-channel health.</p></div></div>
+      <div class="methodology-item"><span class="method-number">06</span><div><h3>Security Baseline Deployment</h3><p>Applied a workstation security baseline through Group Policy.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section alternate-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">04 — EVIDENCE</p>
+      <h2>Technical Walkthrough</h2>
+    </div>
+    <div class="project-text">
+
+<!-- STEP 01 -->
+<div class="evidence-item">
+  <div class="evidence-text">
+    <p class="section-label">STEP 01</p>
+    <h3>Domain Controller Deployment</h3>
+    <p>I deployed Windows Server 2022 and installed the core services required for the domain environment.</p>
+    <p>Active Directory Domain Services, DNS Server, Group Policy Management, and supporting administrative tools were installed before the server was promoted to the primary domain controller.</p>
+    <p>The completed deployment established <strong>DC01</strong> as the domain controller for <strong>ad.hanes.test</strong>.</p>
+    <p class="command-label">Core Services</p>
+    <pre class="command-block"><code>Windows Server 2022
+Active Directory Domain Services
+DNS Server
+Group Policy Management
+Domain: ad.hanes.test
+Domain Controller: DC01</code></pre>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/AD_DS_DNS.png" alt="Active Directory Domain Services and DNS installation on DC01">
+    <p class="evidence-caption">Active Directory Domain Services and DNS were installed as the core identity and name-resolution services.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/01-domain-controller-dc01.png" alt="DC01 listed as the domain controller for ad.hanes.test">
+    <p class="evidence-caption">DC01 was successfully promoted as the domain controller for ad.hanes.test.</p>
+  </div>
+</div>
+
+<!-- STEP 02 -->
+<div class="evidence-item">
+  <div class="evidence-text">
+    <p class="section-label">STEP 02</p>
+    <h3>Active Directory Organizational Structure</h3>
+    <p>I designed an OU structure to separate users, computers, administrative accounts, groups, servers, and service accounts.</p>
+    <p>Department-specific OUs were created for Executives, Finance, Human Resources, IT, and Operations. Computer objects were separated into Workstations and Laptops.</p>
+    <p>This structure created a scalable foundation for role-based access, policy targeting, and delegated administration.</p>
+    <p class="command-label">Domain Structure</p>
+    <pre class="command-block"><code>ad.hanes.test
+└── HEL
+    ├── Admin Accounts
+    ├── Computers
+    │   ├── Laptops
+    │   └── Workstations
+    ├── Groups
+    ├── Servers
+    ├── Service Accounts
+    └── Users
+        ├── Executives
+        ├── Finance
+        ├── HR
+        ├── IT
+        └── Operations</code></pre>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/02-organizational-units.png" alt="Active Directory organizational unit structure">
+    <p class="evidence-caption">Organizational Units separated users, systems, groups, and administrative functions.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/03-domain-users.png" alt="Department user accounts organized in Active Directory">
+    <p class="evidence-caption">Department user accounts were organized within the corresponding OUs.</p>
+  </div>
+</div>
+
+<!-- STEP 03 -->
+<div class="evidence-item">
+  <div class="evidence-text">
+    <p class="section-label">STEP 03</p>
+    <h3>Users, Security Groups & Role-Based Access</h3>
+    <p>Departmental security groups were created to support centralized and scalable access management.</p>
+    <p>Groups were created for Executives, IT, Finance, Human Resources, Operations, Help Desk, and Server Administrators.</p>
+    <p>Membership was validated by assigning IT user accounts to <strong>GG-IT</strong>.</p>
+    <p class="command-label">Security Groups</p>
+    <pre class="command-block"><code>GG-Executives
+GG-IT
+GG-Finance
+GG-HR
+GG-Operations
+GG-HelpDesk
+GG-ServerAdmins</code></pre>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/04-security-groups.png" alt="Active Directory departmental security groups">
+    <p class="evidence-caption">Departmental and administrative security groups supported role-based access management.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/05-rbac-it-membership.png" alt="GG-IT security group membership">
+    <p class="evidence-caption">IT user accounts were assigned to GG-IT to validate group-based administration.</p>
+  </div>
+</div>
+
+<!-- STEP 04 -->
+<div class="evidence-item">
+  <div class="evidence-text">
+    <p class="section-label">STEP 04</p>
+    <h3>Windows 11 Domain Integration</h3>
+    <p>I integrated the Windows 11 workstation <strong>WS01</strong> into the ad.hanes.test domain.</p>
+    <p>Before the domain join, I validated connectivity to DC01 and confirmed DNS resolution through the internal domain controller.</p>
+    <p>After joining WS01, I moved the computer object into the Workstations OU and validated the workstation's secure channel.</p>
+    <p class="command-label">Domain Integration</p>
+    <pre class="command-block"><code>Domain: ad.hanes.test
+Domain Controller: DC01
+DC01: 192.168.10.10
+Workstation: WS01
+WS01: 192.168.10.20
+Computer OU: HEL/Computers/Workstations
+Logon Server: \\DC01
+Secure Channel: True</code></pre>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/06-domain-connectivity.png" alt="WS01 connectivity and DNS validation">
+    <p class="evidence-caption">WS01 successfully resolved and communicated with DC01 before joining the domain.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/07-ws01-workstation-ou.png" alt="WS01 computer object in the Workstations OU">
+    <p class="evidence-caption">WS01 was placed in the Workstations OU for targeted policy administration.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/08-domain-authentication.png" alt="Domain authentication and secure channel validation">
+    <p class="evidence-caption">Domain authentication and secure-channel health were validated directly from WS01.</p>
+  </div>
+</div>
+
+<!-- STEP 05 -->
+<div class="evidence-item">
+  <div class="evidence-text">
+    <p class="section-label">STEP 05</p>
+    <h3>Group Policy & Endpoint Security Hardening</h3>
+    <p>I created a centralized <strong>Workstation Security Baseline</strong> through Group Policy and linked it to the Workstations OU.</p>
+    <p>The baseline enforced Windows Defender Firewall and Microsoft Defender Antivirus settings across the domain-joined endpoint.</p>
+    <p>Firewall profiles were enabled with unsolicited inbound connections blocked, while Defender real-time protection was centrally enforced.</p>
+    <p>I validated the deployment directly from WS01 to confirm that the Workstation Security Baseline and Default Domain Policy were successfully applied.</p>
+    <p class="command-label">Security Baseline</p>
+    <pre class="command-block"><code>Workstation Security Baseline
+│
+├── Windows Defender Firewall
+│   ├── Domain Profile: Enabled
+│   ├── Private Profile: Enabled
+│   ├── Public Profile: Enabled
+│   ├── Inbound Connections: Block
+│   └── Outbound Connections: Allow
+│
+├── Microsoft Defender Antivirus
+│   ├── Real-Time Protection: Enabled
+│   ├── Behavior Monitoring: Enabled
+│   ├── Downloaded File Scanning: Enabled
+│   └── File & Program Monitoring: Enabled
+│
+├── Target OU
+│   └── HEL/Computers/Workstations
+│
+└── Validation
+    ├── Endpoint: WS01
+    └── GPO Applied Successfully</code></pre>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/09-workstation-security-gpo.png" alt="Workstation Security Baseline linked to the Workstations OU">
+    <p class="evidence-caption">The Workstation Security Baseline GPO was linked to the Workstations OU.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/10-firewall-security-baseline.png" alt="Windows Defender Firewall settings configured through Group Policy">
+    <p class="evidence-caption">Windows Defender Firewall was centrally configured with inbound traffic blocked by default.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/11-defender-realtime-protection.png" alt="Microsoft Defender real-time protection configured through Group Policy">
+    <p class="evidence-caption">Microsoft Defender protections were configured and enforced through Group Policy.</p>
+  </div>
+  <div class="evidence-image">
+    <img src="../images/enterprise-security/12-gpo-applied-ws01.png" alt="WS01 confirming that the security baseline was applied">
+    <p class="evidence-caption">Group Policy results on WS01 confirmed successful baseline deployment.</p>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">05 — TROUBLESHOOTING</p>
+      <h2>Troubleshooting & Problem Solving</h2>
+    </div>
+    <div class="project-text">
+      <p>
+        Building the environment required troubleshooting across networking,
+        DNS, domain communication, and policy validation.
+      </p>
+
+      <div class="troubleshooting-item">
+        <p class="section-label">ISSUE 01</p>
+        <h3>Active Directory DNS Registration</h3>
+        <p>
+          During domain connectivity testing, I identified DNS registration
+          and name-resolution issues affecting communication with the domain controller.
+        </p>
+        <p>
+          Because Active Directory relies on DNS to locate domain controllers
+          and authentication services, I reviewed the internal DNS configuration
+          and corrected DC01 registration.
+        </p>
+        <p>
+          I then used PowerShell to confirm that
+          <strong>dc01.ad.hanes.test</strong> resolved to the correct internal address.
+        </p>
+
+        <div class="troubleshooting-grid">
+          <div class="troubleshooting-detail">
+            <h4>Problem</h4>
+            <p>Domain services were not resolving consistently through the expected internal DNS configuration.</p>
+          </div>
+          <div class="troubleshooting-detail">
+            <h4>Action</h4>
+            <p>Reviewed the Active Directory DNS configuration and corrected the DNS registration for DC01.</p>
+          </div>
+          <div class="troubleshooting-detail">
+            <h4>Validation</h4>
+            <p>Confirmed that dc01.ad.hanes.test resolved to 192.168.10.10 using PowerShell.</p>
+          </div>
+        </div>
+
+        <p class="command-label">Validation</p>
+        <pre class="command-block"><code>Resolve-DnsName dc01.ad.hanes.test
+
+Name:    dc01.ad.hanes.test
+Address: 192.168.10.10</code></pre>
+
+        <div class="evidence-image">
+          <img src="../images/enterprise-security/17-dns-registration-corrected.png" alt="Corrected DNS registration for DC01">
+          <p class="evidence-caption">DC01 successfully resolved to 192.168.10.10 after the DNS registration was corrected.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section alternate-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">06 — SECURITY OUTCOMES</p>
+      <h2>Infrastructure Outcomes</h2>
+    </div>
+    <div class="project-text">
+      <p>
+        The completed environment provides centralized identity, access control,
+        endpoint administration, and security policy enforcement across a Windows domain.
+      </p>
+
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <p class="card-label">IDENTITY</p>
+          <h3>Centralized Directory Services</h3>
+          <p>Deployed Active Directory Domain Services for centralized authentication and identity management.</p>
+        </div>
+        <div class="outcome-card">
+          <p class="card-label">ORGANIZATION</p>
+          <h3>Scalable Domain Structure</h3>
+          <p>Organized users, systems, groups, servers, and administrative accounts through targeted OUs.</p>
+        </div>
+        <div class="outcome-card">
+          <p class="card-label">ACCESS CONTROL</p>
+          <h3>Role-Based Security Groups</h3>
+          <p>Used departmental security groups to support scalable, group-based permission administration.</p>
+        </div>
+        <div class="outcome-card">
+          <p class="card-label">ENDPOINT MANAGEMENT</p>
+          <h3>Domain-Joined Workstation</h3>
+          <p>Integrated WS01 and validated DNS, authentication, OU placement, and secure-channel health.</p>
+        </div>
+        <div class="outcome-card">
+          <p class="card-label">POLICY</p>
+          <h3>Centralized Configuration</h3>
+          <p>Applied security settings through Group Policy rather than configuring each system independently.</p>
+        </div>
+        <div class="outcome-card">
+          <p class="card-label">HARDENING</p>
+          <h3>Workstation Security Baseline</h3>
+          <p>Enforced Defender Firewall and Antivirus protections through a validated workstation baseline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">07 — SKILLS DEMONSTRATED</p>
+      <h2>Technical Skills Demonstrated</h2>
+    </div>
+    <div class="project-text">
+      <p>
+        This project required hands-on work across Windows Server, identity
+        management, networking, endpoint administration, policy deployment,
+        and infrastructure troubleshooting.
+      </p>
+
+      <div class="skills-demonstrated-grid">
+        <div class="skill-demonstrated-card">
+          <p class="card-label">IDENTITY</p>
+          <h3>Active Directory</h3>
+          <p>Deployed and administered an Active Directory domain with users, groups, OUs, computers, and administrative accounts.</p>
+          <div class="skill-tags"><span>AD DS</span><span>OUs</span><span>Users</span><span>Security Groups</span></div>
+        </div>
+        <div class="skill-demonstrated-card">
+          <p class="card-label">NETWORKING</p>
+          <h3>DNS & Domain Connectivity</h3>
+          <p>Configured and troubleshot internal DNS, IP addressing, domain communication, and secure-channel health.</p>
+          <div class="skill-tags"><span>DNS</span><span>TCP/IP</span><span>Domain Join</span><span>Secure Channel</span></div>
+        </div>
+        <div class="skill-demonstrated-card">
+          <p class="card-label">ACCESS CONTROL</p>
+          <h3>Role-Based Administration</h3>
+          <p>Created departmental security groups and validated membership-based identity administration.</p>
+          <div class="skill-tags"><span>RBAC</span><span>Group Membership</span><span>IAM</span></div>
+        </div>
+        <div class="skill-demonstrated-card">
+          <p class="card-label">POLICY</p>
+          <h3>Group Policy</h3>
+          <p>Created, linked, applied, and validated Group Policy Objects for domain-joined endpoints.</p>
+          <div class="skill-tags"><span>GPO</span><span>Security Baselines</span><span>Policy Enforcement</span></div>
+        </div>
+        <div class="skill-demonstrated-card">
+          <p class="card-label">ENDPOINT SECURITY</p>
+          <h3>Windows Security Hardening</h3>
+          <p>Centrally configured Microsoft Defender Antivirus and Windows Defender Firewall protections.</p>
+          <div class="skill-tags"><span>Microsoft Defender</span><span>Windows Firewall</span><span>Hardening</span></div>
+        </div>
+        <div class="skill-demonstrated-card">
+          <p class="card-label">VALIDATION</p>
+          <h3>PowerShell & Troubleshooting</h3>
+          <p>Used PowerShell and Windows administrative tools to validate DNS, domain trust, policy application, and infrastructure health.</p>
+          <div class="skill-tags"><span>PowerShell</span><span>Resolve-DnsName</span><span>gpresult</span><span>Root Cause Analysis</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project-detail-section alternate-section">
+  <div class="section-container project-content">
+    <div class="project-section-heading">
+      <p class="section-label">08 — LESSONS LEARNED</p>
+      <h2>Lessons Learned & Project Takeaways</h2>
+    </div>
+    <div class="project-text">
+      <p>
+        Building the environment reinforced that enterprise Windows
+        infrastructure depends on correctly configured and validated
+        relationships between networking, DNS, identity, policy, and endpoint administration.
+      </p>
+
+      <div class="lessons-grid">
+        <div class="lesson-card">
+          <p class="card-label">01 — DNS</p>
+          <h3>Identity Depends on Name Resolution</h3>
+          <p>Active Directory relies on internal DNS. Name resolution should be validated before troubleshooting higher-level domain services.</p>
+        </div>
+        <div class="lesson-card">
+          <p class="card-label">02 — STRUCTURE</p>
+          <h3>Design Supports Scalability</h3>
+          <p>A clear OU and group structure makes identity, policy, and future administrative delegation easier to manage.</p>
+        </div>
+        <div class="lesson-card">
+          <p class="card-label">03 — POLICY</p>
+          <h3>Configuration Requires Validation</h3>
+          <p>Creating a GPO does not guarantee endpoint application. Policy results must be verified directly on the target.</p>
+        </div>
+        <div class="lesson-card">
+          <p class="card-label">04 — TROUBLESHOOTING</p>
+          <h3>Validate One Dependency at a Time</h3>
+          <p>Testing connectivity, DNS, domain trust, and policy independently reduced unnecessary configuration changes.</p>
+        </div>
+      </div>
+
+      <div class="project-takeaway">
+        <p class="card-label">FINAL TAKEAWAY</p>
+        <h3>A Secure Foundation for Enterprise Operations</h3>
+        <p>
+          This project established a functioning Windows domain with centralized
+          identity management, role-based administration, policy enforcement,
+          endpoint hardening, and validated domain communication.
+        </p>
+        <p>
+          The completed infrastructure now serves as the foundation for separate
+          blue-team monitoring, detection engineering, and offensive-security projects.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="project-footer-section">
+  <div class="section-container">
+    <div class="project-footer">
+      <div class="project-footer-text">
+        <p class="section-label">PROJECT COMPLETE</p>
+        <h2>Enterprise Security Infrastructure</h2>
+        <p>
+          Windows enterprise infrastructure focused on Active Directory, DNS,
+          identity management, Group Policy, domain integration, and endpoint hardening.
+        </p>
+      </div>
+      <div class="project-footer-actions">
+        <a href="../index.html#projects" class="btn secondary-btn">← Back to Projects</a>
+        <a href="blue-team-operations.html" class="btn primary-btn">View Blue Team Work →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</body>
+</html>

@@ -44,13 +44,11 @@ body {
 
 .nav-links a:hover {
     color: #38bdf8;
-}
-.hero {
-    min-height: 550px;
+}.hero {
+    min-height: 650px;
     display: flex;
-    align-items: center;
-    padding: 80px 30px 70px;
-    border-bottom: 1px solid #1f2937;
+    align-items: flex-start;
+    padding: 140px 30px 80px;
 }
 
 .hero-content {
@@ -64,41 +62,41 @@ body {
     font-size: 0.9rem;
     font-weight: 700;
     letter-spacing: 2px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
     font-size: 4rem;
     line-height: 1.1;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #f8fafc;
 }
 
 .hero h2 {
     font-size: 2rem;
     font-weight: 500;
-    color: #cbd5e1;
-    margin:20px 0 30px;
+    color: #94a3b8;
+    margin-bottom: 25px;
 }
 
 .hero-description {
-    max-width: 720px;
+    max-width: 700px;
     font-size: 1.1rem;
-    line-height: 1.8;
+    line-height: 1.7;
     color: #cbd5e1;
-    margin-bottom: 36px;
-}    
+    margin-bottom: 35px;
+}
 
-.hero-buttons{
-    margin-top:45px;
+.hero-buttons {
+    display: flex;
+    gap: 15px;
 }
 
 .btn {
     display: inline-block;
-    padding: 14px 28px;
+    padding: 12px 24px;
     border-radius: 6px;
     text-decoration: none;
-    font-size: 1rem;
     font-weight: 600;
     transition: 0.2s ease;
 }
@@ -155,7 +153,7 @@ body {
 .project-card {
     display: flex;
     flex-direction: column;
-    min-height: 420px;
+    min-height: 360px;
     padding: 30px;
 }
 .project-card {
@@ -187,13 +185,13 @@ body {
 }
 .project-card .project-link,
 .project-card .coming-soon {
-    margin-top: 28px;
+    margin-top: auto;
 }
 
 .project-card h3 {
     color: #f8fafc;
     font-size: 1.3rem;
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 }
 
 .project-tools {
@@ -202,8 +200,9 @@ body {
     margin-bottom: 20px;
 }
 
-.project-card p{
-    flex-grow:1;
+.project-card p {
+    color: #cbd5e1;
+    line-height: 1.6;
 }
 
 .project-link {
@@ -1308,7 +1307,7 @@ font-family:monospace;
 
 }
 .section-description{
-    margin-bottom:80px;
+    margin-bottom:65px;
 }
 .project-card:hover{
 
@@ -1337,53 +1336,4 @@ a.project-link:visited {
 a.project-link:hover,
 a.project-link:focus {
     color: #7dd3fc !important;
-}
-/* Homepage project technology tags */
-.project-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:22px;
-    margin-bottom:22px;
-}
-
-.project-tags span{
-    display:inline-block;
-    padding:7px 10px;
-    border:1px solid #243044;
-    border-radius:6px;
-    background:#0b1120;
-    color:#cbd5e1;
-    font-size:.78rem;
-    font-family:Consolas, monospace;
-    transition:.25s ease;
-}
-
-.project-tags span:hover{
-    color:#38bdf8;
-    border-color:#38bdf8;
-}
-.project-card .project-tags{
-    margin-top:24px;
-}
-.project-hero-image {
-    margin: 50px 0;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid #233248;
-    box-shadow: 0 15px 40px rgba(0,0,0,.35);
-}
-
-.project-hero-image img{
-    display:block;
-    width:100%;
-    height:auto;
-}
-
-.project-hero-image figcaption{
-    background:#0f172a;
-    color:#94a3b8;
-    padding:14px 20px;
-    font-size:.9rem;
-    border-top:1px solid #233248;
 }
