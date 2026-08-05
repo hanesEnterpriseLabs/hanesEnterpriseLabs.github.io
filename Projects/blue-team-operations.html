@@ -784,6 +784,223 @@ DC01 - Forwarded Events
                             </p>
 
                         </div>
+                        <!-- DETECTION STEP 07 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">DETECTION STEP 07</p>
+
+        <h3>SMB Authentication Failure Detection</h3>
+
+        <p>
+            During the Offensive Security engagement, controlled SMB
+            authentication attempts were performed against DC01, WS01, and FS01
+            using NetExec and intentionally invalid credentials.
+        </p>
+
+        <p>
+            The failed authentication activity generated
+            <strong>Windows Security Event ID 4625</strong>, allowing the
+            offensive action to be investigated from the defender's perspective.
+        </p>
+
+        <p>
+            The event details identified the attempted account
+            <strong>ecarter</strong>, the
+            <strong>ad.hanes.test</strong> domain, a network-based
+            <strong>Logon Type 3</strong>, and the
+            <strong>NTLM</strong> authentication package.
+        </p>
+
+        <p>
+            The status and failure-reason fields confirmed that the supplied
+            credentials were rejected. This demonstrated that the monitoring
+            environment could capture and expose authentication activity
+            generated during an authorized penetration test.
+        </p>
+
+        <p class="command-label">Detection Correlation</p>
+
+        <pre class="command-block"><code>NetExec SMB Authentication Test
+        │
+        ▼
+Invalid Credentials Submitted
+        │
+        ▼
+Windows Security Event ID 4625
+        │
+        ├── TargetUserName: ecarter
+        ├── TargetDomainName: ad.hanes.test
+        ├── FailureReason: %%2313
+        ├── LogonType: 3
+        └── AuthenticationPackageName: NTLM
+        │
+        ▼
+Centralized Blue Team Investigation</code></pre>
+
+        <div class="project-note">
+
+            <p class="section-label">RELATED OFFENSIVE ACTIVITY</p>
+
+            <p>
+                This detection was generated during
+                <strong>Enterprise Step 05 — SMB Authentication Testing</strong>
+                in the Offensive Security & Penetration Testing project.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/blue-team/52-Failed-Logon-Detection-event4625.png"
+            alt="Windows Security Event ID 4625 showing a failed SMB authentication attempt for the ecarter account"
+        >
+
+        <p class="evidence-caption">
+            Windows Security Event ID 4625 captured the failed
+            SMB authentication attempt against the ecarter account, including
+            the target domain, failure status, network logon type, and NTLM
+            authentication package.
+        </p>
+
+    </div>
+    <!-- DETECTION STEP 08 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">DETECTION STEP 08</p>
+
+        <h3>Advanced Audit Policy Configuration</h3>
+
+        <p>
+            To expand Windows monitoring beyond authentication events, I
+            configured Advanced Audit Policy settings through Group Policy to
+            enable detailed Object Access auditing across the enterprise
+            environment.
+        </p>
+
+        <p>
+            After updating the Group Policy Object, I forced an immediate policy
+            refresh using <strong>gpupdate /force</strong> and verified that the
+            new auditing configuration had been successfully applied.
+        </p>
+
+        <p>
+            Verification confirmed that File System auditing, File Share
+            auditing, Detailed File Share auditing, and Other Object Access
+            Events were configured for Success and Failure logging, preparing
+            the environment to generate detailed security telemetry during file
+            access activity.
+        </p>
+
+        <p class="command-label">Verification Commands</p>
+
+<pre class="command-block"><code>gpupdate /force
+
+auditpol /get /category:"Object Access"</code></pre>
+
+    </div>
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/blue-team/53-audit-policy-successfully-applied.png"
+            alt="Verification of Advanced Audit Policy configuration using auditpol"
+        >
+
+        <p class="evidence-caption">
+            Group Policy was successfully updated and
+            Advanced Audit Policy verification confirmed Object Access,
+            File Share, and Detailed File Share auditing were enabled.
+        </p>
+
+    </div>
+    <!-- DETECTION STEP 09 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">DETECTION STEP 09</p>
+
+        <h3>Detailed File Share Access Monitoring</h3>
+
+        <p>
+            After enabling Advanced Audit Policy, I validated the new logging
+            configuration by generating file share activity and reviewing the
+            resulting Windows Security events.
+        </p>
+
+        <p>
+            Windows Security <strong>Event ID 5145</strong> confirmed that the
+            operating system was auditing network file share access requests.
+            The event captured the requesting user account, access attempt,
+            target computer, and additional context useful during forensic
+            investigations.
+        </p>
+
+        <p>
+            This validation demonstrated that the environment could monitor file
+            share activity beyond authentication events, providing additional
+            visibility into user behavior and potential unauthorized access
+            attempts.
+        </p>
+
+        <p class="command-label">Detection Workflow</p>
+
+<pre class="command-block"><code>Advanced Audit Policy
+        │
+        ▼
+Group Policy Applied
+        │
+        ▼
+User Accesses Network Share
+        │
+        ▼
+Windows Security Event ID 5145
+        │
+        ▼
+Blue Team Investigation</code></pre>
+
+        <div class="project-note">
+
+            <p class="section-label">BLUE TEAM CAPABILITY</p>
+
+            <p>
+                Event ID 5145 provides visibility into network share access,
+                enabling defenders to investigate user activity, suspicious file
+                access, and lateral movement involving Windows file shares.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/blue-team/54-detailed-file-share-access-detection.png"
+            alt="Windows Security Event ID 5145 showing detailed file share access monitoring"
+        >
+
+        <p class="evidence-caption">
+            Windows Security Event ID 5145 confirmed that
+            Detailed File Share auditing was functioning correctly and
+            successfully recorded network file share access activity.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
 
                     </div>
 
@@ -1048,6 +1265,40 @@ LastError: 0</code></pre>
                                 administrative discovery activity.
                             </p>
                         </div>
+                        <div class="outcome-card">
+    <p class="card-label">ATTACK CORRELATION</p>
+    <h3>SMB Authentication Detection</h3>
+
+    <p>
+        Correlated NetExec authentication testing with Windows Security
+        Event ID 4625 to connect offensive activity with centralized
+        defensive investigation.
+    </p>
+</div>
+<div class="outcome-card">
+
+    <p class="card-label">AUDITING</p>
+
+    <h3>Advanced Audit Policy</h3>
+
+    <p>
+        Configured and verified Advanced Audit Policy settings to expand
+        Windows security telemetry beyond authentication events.
+    </p>
+
+</div>
+<div class="outcome-card">
+
+    <p class="card-label">OBJECT ACCESS</p>
+
+    <h3>File Share Monitoring</h3>
+
+    <p>
+        Validated Event ID 5145 generation to monitor network file share
+        activity and improve investigative visibility.
+    </p>
+
+</div>
 
                     </div>
 
@@ -1165,6 +1416,24 @@ LastError: 0</code></pre>
                                 <span>Services</span>
                                 <span>Root Cause Analysis</span>
                             </div>
+                            <div class="skill-demonstrated-card">
+
+    <p class="card-label">WINDOWS AUDITING</p>
+
+    <h3>Advanced Audit Policy</h3>
+
+    <p>
+        Configured and verified Windows Advanced Audit Policy to increase
+        security event visibility across enterprise systems.
+    </p>
+
+    <div class="skill-tags">
+        <span>Group Policy</span>
+        <span>auditpol</span>
+        <span>Object Access</span>
+    </div>
+
+</div>
                         </div>
 
                     </div>

