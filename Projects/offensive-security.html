@@ -278,7 +278,10 @@ nmap -Pn -sV -sC 192.168.10.10</code></pre>
         The failed SMB authentication attempts documented in this step generated
         Windows Security Event ID 4625. These events were centrally collected
         through Windows Event Forwarding and investigated within the
-        <strong>Blue Team Operations & Detection Engineering</strong> project.
+        <a href="blue-team-operations.html" class="inline-project-link">
+            Blue Team Operations & Detection Engineering
+        </a>
+        project. project.
     </p>
 
 </div>
@@ -309,6 +312,145 @@ netexec smb 192.168.10.30 -u ecarter -p WrongPassword123!</code></pre>
         </p>
 
     </div>
+    <!-- ENTERPRISE STEP 06 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">ENTERPRISE STEP 06</p>
+
+        <h3>SMB Share Enumeration</h3>
+
+        <p>
+            Following successful authentication testing, I established an
+            authenticated SMB session against the Finance share hosted on
+            FS01 to identify accessible resources available to the test
+            account.
+        </p>
+
+        <p>
+            Using <strong>smbclient</strong>, I enumerated the directory
+            structure, confirmed access permissions, and identified several
+            business-related files including departmental folders, payroll
+            information, budgeting documents, and shared documentation.
+        </p>
+
+        <p>
+            This phase focused on understanding the organization's available
+            resources rather than modifying data. Enumerating accessible
+            shares is a critical reconnaissance step because it reveals
+            potential locations of sensitive information that may become
+            objectives during later stages of an assessment.
+        </p>
+
+        <p class="command-label">Commands</p>
+
+<pre class="command-block"><code>smbclient //192.168.10.30/Finance -U HANES/ecarter
+
+ls
+
+get ReadMe.txt</code></pre>
+
+    </div>
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/offensive-security/Kali-17-File Download from Finance Share.png"
+            alt="Authenticated SMB share enumeration using smbclient"
+        >
+
+        <p class="evidence-caption">
+            Authenticated enumeration of the Finance share
+            validated read permissions, identified accessible business
+            documents, and established the scope of available data within
+            the enterprise file server.
+        </p>
+
+    </div>
+    <!-- ENTERPRISE STEP 07 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">ENTERPRISE STEP 07</p>
+
+        <h3>Authorized File Operations Validation</h3>
+
+        <p>
+            After identifying accessible resources within the Finance share,
+            I performed controlled file operations to validate the permissions
+            assigned to the authenticated user account.
+        </p>
+
+        <p>
+            A test file (<strong>HEL.txt</strong>) was uploaded to the share,
+            verified through directory enumeration, and then removed after
+            testing was complete. These actions confirmed that the account
+            possessed write and delete permissions within the authorized
+            environment.
+        </p>
+
+        <p>
+            Performing controlled file operations provides a realistic
+            assessment of user permissions while minimizing impact to the
+            environment. Restoring the share to its original state after
+            testing reflects standard security assessment practices.
+        </p>
+
+        <p>
+            These actions also generated Windows Security
+            <strong>Event ID 5145</strong>, allowing the activity to be
+            investigated from the defender's perspective within the Blue Team
+            Operations project.
+        </p>
+
+        <p class="command-label">Commands</p>
+
+<pre class="command-block"><code>put HEL.txt
+
+ls
+
+del HEL.txt
+
+ls</code></pre>
+
+        <div class="project-note">
+
+    <p class="section-label">BLUE TEAM CORRELATION</p>
+
+    <p>
+        Uploading and deleting HEL.txt generated Windows Security
+        Event ID 5145, allowing this activity to be investigated in the
+        <a href="blue-team-operations.html" class="inline-project-link">
+            Blue Team Operations & Detection Engineering
+        </a>
+        project.
+    </p>
+
+</div>
+
+    </div>
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/offensive-security/Kali-18-File Upload and Deletion in Finance Share.png"
+            alt="Controlled upload and deletion of HEL.txt within the Finance SMB share"
+        >
+
+        <p class="evidence-caption">
+            Controlled upload, verification, and removal of
+            HEL.txt confirmed write and delete permissions within the
+            Finance share while generating Windows Security Event ID 5145
+            for defensive investigation.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
 
 </div>
         </div>

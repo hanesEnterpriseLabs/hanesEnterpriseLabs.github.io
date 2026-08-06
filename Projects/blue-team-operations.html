@@ -995,6 +995,84 @@ Blue Team Investigation</code></pre>
         </p>
 
     </div>
+    <!-- DETECTION STEP 10 -->
+<div class="evidence-item">
+
+    <div class="evidence-text">
+
+        <p class="section-label">DETECTION STEP 10</p>
+
+        <h3>Detailed File Share Investigation</h3>
+
+        <p>
+            Following the controlled file operations performed during the
+            Offensive Security assessment, I investigated Windows Security
+            Event ID 5145 to analyze the recorded file share activity.
+        </p>
+
+        <p>
+            The event identified the authenticated user
+            <strong>ecarter</strong>, the originating IP address
+            <strong>192.168.10.50</strong>, the
+            <strong>Finance</strong> network share, and the target file
+            <strong>HEL.txt</strong>. These details provide investigators
+            with valuable context when reconstructing user activity.
+        </p>
+
+        <p>
+            Event ID 5145 demonstrates how Windows records detailed network
+            file share access, allowing analysts to determine who accessed a
+            resource, where the request originated, and which object was
+            involved during an investigation.
+        </p>
+
+        <p class="command-label">Investigation Summary</p>
+
+<pre class="command-block"><code>User: ecarter
+
+Source IP: 192.168.10.50
+
+Share: \\Finance
+
+Target File: HEL.txt
+
+Event ID: 5145
+
+Action: File Share Access</code></pre>
+
+        <div class="project-note">
+
+            <p class="section-label">RELATED OFFENSIVE ACTIVITY</p>
+
+            <p>
+                This event was generated during Enterprise Step 07 —
+                Authorized File Operations, where HEL.txt was uploaded,
+                verified, and removed from the Finance share.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="evidence-image">
+
+        <img
+            src="../images/blue-team/55-File Share Access Detection (Event ID 5145).png"
+            alt="Event ID 5145 showing HEL.txt access details"
+        >
+
+        <p class="evidence-caption">
+            Event ID 5145 identified the authenticated user,
+            originating IP address, Finance network share, and HEL.txt file,
+            allowing investigators to reconstruct the activity performed
+            during authorized penetration testing.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
 
 </div>
 

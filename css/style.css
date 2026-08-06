@@ -1387,3 +1387,17 @@ a.project-link:focus {
     font-size:.9rem;
     border-top:1px solid #233248;
 }
+.evidence-caption {
+    margin-top: 18px;
+}
+.inline-project-link{
+    color:#38bdf8;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s ease;
+}
+
+.inline-project-link:hover{
+    color:#7dd3fc;
+    text-decoration:underline;
+}
